@@ -1,9 +1,19 @@
 import React from "react";
 import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
-import SearchBar from "../Navbar/Navbar.js";
+import { useState } from "react";
+
 
 function Navbar() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]); 
+
+  const handleSearch = (query) => {
+    // In a real application, you would perform an API call or search logic here
+    // For now, let's simulate some search results
+    const mockResults = ["Result 1", "Result 2", "Result 3"];
+    setSearchResults(mockResults.filter((result) => result.includes(query)));
+  };
   function menuOnclick() {
     let menu = document.querySelector("#menu-btn1");
     let navbar = document.querySelector(".navbar");
@@ -27,7 +37,7 @@ function Navbar() {
         <div id="menu-btn1" onClick={menuOnclick} className="fas fa-bars"></div>
 
         <Link to={"/home"} className="logo">
-          <span style={{ fontSize: "150%" }}>..PMS</span> System..
+          <span style={{ fontSize: "150%" }}>PMS</span> System.
           <i
             className="fa-solid fa-award"
             style={{ color: "#000000", fontSize: "150%" }}
@@ -48,13 +58,13 @@ function Navbar() {
           >
             Jobs
           </Link>
-          <Link
+          {/* <Link
             to={"/AboutUs"}
             className="nav-link active"
             style={{ backgroundColor: "transparent" }}
           >
-            About Us
-          </Link>
+            AboutUs
+          </Link> */}
           <Link
             to={"/Services"}
             className="nav-link active"
@@ -62,7 +72,24 @@ function Navbar() {
           >
             Services
           </Link>
-          <SearchBar />
+          {/* Add the rounded search bar */}
+          <div className="rounded-search">
+            <input
+              type="text"
+              placeholder="Search..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <button onClick={() => handleSearch(searchQuery)}>Search</button>
+          </div>
+          <div className="dropdown">
+            <button className="dropdown-btn">For Employers</button>
+            <div className="dropdown-content">
+              <Link to={"/CreateJob"}>Post a Job</Link>
+              <Link to={"/recruiterLogin"}>Login</Link>
+              {/* Add more dropdown items as needed */}
+            </div>
+          </div>
 
           {/* <a href="/Home#Services"> Services</a> */}
 
