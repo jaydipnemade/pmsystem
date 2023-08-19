@@ -1,0 +1,290 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+
+:root {
+  --blue: #0a42df;
+  --light-blue: #275df5;
+  --black: #130f40;
+  --light-colour: #666666;
+  --border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0%;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: capitalize;
+  transition: all 0.2s linear;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+  scroll-behavior: smooth;
+}
+
+section {
+  padding: 2rem 9%;
+}
+
+
+
+
+
+
+.home {
+  padding-top: 15rem;
+  text-align: center;
+  overflow-x: hidden;
+}
+.home h1 {
+  font-size: 4.5vw;
+  text-transform: uppercase;
+  color: var(--black);
+}
+
+.home img {
+  width: 100%;
+  margin: 1rem 0;
+}
+
+/* media queries */
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+  .header {
+    padding: 2rem;
+  }
+
+  .header.active {
+    padding: 2rem;
+  }
+  section {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header #login-btn1 i {
+    display: block;
+  }
+
+  #menu-btn1 {
+    display: block;
+  }
+
+  #menu-btn1.fa-times {
+    transform: rotate(180deg);
+  }
+
+  .header #login-btn1 .btn1 {
+    display: none;
+  }
+  .header .navbar {
+    position: absolute;
+    top: 99%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border-top: var(--border);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+
+  .header .navbar.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  .header .navbar a {
+    display: block;
+    margin: 2rem;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+/* iconsContainer Section Start */
+.iconsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 1.5rem;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background: #eee;
+}
+.iconsContainer .icons {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  box-shadow: var(--box_shadow);
+  border-radius: 0.5rem;
+  gap: 1.5rem;
+  padding: 2rem;
+  cursor: pointer;
+}
+.iconsContainer .icons i {
+  background: #ccc;
+  height: 5rem;
+  width: 5rem;
+  line-height: 5rem;
+  font-size: 2.5rem;
+  text-align: center;
+  border-radius: 50%;
+}
+.iconsContainer .icons h3 {
+  font-size: 2.5rem;
+  color: var(--main);
+}
+.iconsContainer .icons p {
+  color: var(--main);
+  font-size: 1.5rem;
+}
+.iconsContainer .icons:hover {
+  background: var(--light-yellow);
+}
+/* iconsContainer Section End */
+
+/* Services Section Start */
+.services .boxContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  gap: 1.5rem;
+}
+.services .boxContainer .box {
+  box-shadow: var(--box_shadow);
+  border: var(--border);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+}
+.services .boxContainer .box:hover {
+  background:#b6c6f3;;
+  color: #000000;
+}
+.services .boxContainer .box i {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  line-height: 6rem;
+  background: var(--main);
+  color: #000;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.services .boxContainer .box h3 {
+  font-size: 2.2rem;
+}
+.services .boxContainer .box p {
+  line-height: 1.8;
+  padding: 1rem 0;
+  font-size: 1.4rem;
+}
+
+.heading {
+  padding-bottom: 2rem;
+  font-size: 4.5rem;
+  text-align: center;
+}
+/* Services Section End */
+
+/* Review Section Start */
+.ReviewSlider {
+  padding-bottom: 3rem;
+}
+.ReviewSlider .box {
+  padding: 2rem;
+  text-align: center;
+  opacity: 0.5;
+  margin: 2rem 0;
+  transform: scale(0.8);
+}
+.ReviewSlider .swiper-slide-active {
+  opacity: 1;
+  transform: scale(1);
+  box-shadow: var(--box_shadow);
+  border: var(--border);
+  border-radius: 0.5rem;
+}
+.ReviewSlider .box img {
+  height: 7rem;
+  width: 7rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.ReviewSlider .box .content p {
+  font-size: 1.4rem;
+  padding: 1rem 0;
+}
+.ReviewSlider .box .content h3 {
+  font-size: 2.2rem;
+  padding-bottom: 0.5rem;
+}
+.ReviewSlider .box .content .stars i {
+  font-size: 1.7rem;
+  color: var(--main);
+}
+/* Review Section End */
+
+/* Footer Start */
+.footer {
+  background: var(--light-yellow);
+  position: relative;
+}
+
+.footer .box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  gap: 1.5rem;
+}
+
+.footer .box-container .box h3 {
+  color: var(--black);
+  font-size: 2.2rem;
+  padding: 1rem 0;
+}
+
+.footer .box-container .box a {
+  color: var(--light-colour);
+  font-size: 1.4rem;
+  display: block;
+  padding: 1rem 0;
+}
+/* .footer .box-container .box li{
+  color: var(--light-colour);
+  font-size: 1.4rem;
+  display: block;
+  padding: 1rem 0;
+} */
+
+.footer .box-container .box a i {
+  padding-right: 0.5rem;
+  color: var(--black);
+}
+
+.footer .box-container .box a:hover i {
+  padding-right: 2rem;
+}
+
+.strip {
+  background: var(--black);
+  width: 100%;
+  position: absolute;
+}
+.strip h3 {
+  color: #eee;
+  justify-content: center;
+  padding: 1.5rem;
+  text-decoration-line: underline;
+}
+/*Footer End*/
