@@ -37,7 +37,7 @@ function Navbar() {
         <div id="menu-btn1" onClick={menuOnclick} className="fas fa-bars"></div>
 
         <Link to={"/home"} className="logo">
-          <span style={{ fontSize: "150%" }}>PMS</span> System.
+          <span style={{ fontSize: "150%" }}>PMS</span> 
           <i
             className="fa-solid fa-award"
             style={{ color: "#000000", fontSize: "150%" }}

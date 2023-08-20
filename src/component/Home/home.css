@@ -153,6 +153,10 @@ section {
   background: var(--light-yellow);
 }
 /* iconsContainer Section End */
+.ResumeBuilder h3{
+    font-weight:normal !important;
+    font-size: large;
+}
 
 /* Services Section Start */
 .services .boxContainer {
@@ -237,44 +241,7 @@ section {
 /* Review Section End */
 
 /* Footer Start */
-.footer {
-  background: var(--light-yellow);
-  position: relative;
-}
 
-.footer .box-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
-  gap: 1.5rem;
-}
-
-.footer .box-container .box h3 {
-  color: var(--black);
-  font-size: 2.2rem;
-  padding: 1rem 0;
-}
-
-.footer .box-container .box a {
-  color: var(--light-colour);
-  font-size: 1.4rem;
-  display: block;
-  padding: 1rem 0;
-}
-/* .footer .box-container .box li{
-  color: var(--light-colour);
-  font-size: 1.4rem;
-  display: block;
-  padding: 1rem 0;
-} */
-
-.footer .box-container .box a i {
-  padding-right: 0.5rem;
-  color: var(--black);
-}
-
-.footer .box-container .box a:hover i {
-  padding-right: 2rem;
-}
 
 .strip {
   background: var(--black);
