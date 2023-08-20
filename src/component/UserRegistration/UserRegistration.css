@@ -78,6 +78,14 @@ section {
   padding: 2rem;
 }
 
+.form_container h2 {
+  font-size: 20px;
+  margin-top: 0;
+  justify-content: center !important;
+  color: aliceblue;
+  padding: 1rem;
+}
+
 .uinput {
   outline: none;
   border: none;
@@ -88,8 +96,36 @@ section {
   margin: 4px 0 ;
   font-size: 12px;
   
+  justify-content: center;
 }
-
+.input1 {
+  /* outline: none; */
+  /* border: none; */
+  width:95%;
+  padding: 10px ;
+  padding-left: 10%;
+  padding-right: 6%;
+  /* border-radius: 9px; */
+ 
+  /* margin: 4px 0 ; */
+  font-size: 12px;
+  
+  
+}
+.input2 {
+  /* outline: none; */
+  /* border: none; */
+  width:80%;
+  padding: 10px ;
+  padding-left: 10%;
+  padding-right: 6%;
+  /* border-radius: 9px; */
+ 
+  /* margin: 4px 0 ; */
+  font-size: 12px;
+  
+  
+}
 .error_msg {
   /* width: 370px; */
   padding: 15px;
