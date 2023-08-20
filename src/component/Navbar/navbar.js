@@ -29,7 +29,7 @@ function Navbar() {
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/UserLogin");
   };
   return (
     <>
@@ -37,7 +37,7 @@ function Navbar() {
         <div id="menu-btn1" onClick={menuOnclick} className="fas fa-bars"></div>
 
         <Link to={"/home"} className="logo">
-          <span style={{ fontSize: "150%" }}>PMS</span> 
+          <span style={{ fontSize: "150%" }}>PMS</span>
           <i
             className="fa-solid fa-award"
             style={{ color: "#000000", fontSize: "150%" }}
@@ -91,18 +91,9 @@ function Navbar() {
             </div>
           </div>
 
-          {/* <a href="/Home#Services"> Services</a> */}
-
-          {/* <Link
-            to={"/UserDashboard"}
-            className="nav-link active"
-            style={{ backgroundColor: "transparent" }}
-          >
-            <i class="fa-solid fa-bell fa-shake fa-2xl"></i>
-          </Link> */}
           {isLoggedIn && (
             <Link
-              to={"/UserDashboard"}
+              to={"/Home"}
               className="nav-link active"
               style={{ backgroundColor: "transparent" }}
             >
@@ -138,7 +129,7 @@ function Navbar() {
             </button>
           ) : (
             <Link
-              to={"/login"}
+              to={"/UserLogin"}
               className="nav-link active"
               style={{ backgroundColor: "transparent" }}
             >
@@ -148,6 +139,7 @@ function Navbar() {
             </Link>
           )}
         </div>
+        
       </header>
     </>
   );

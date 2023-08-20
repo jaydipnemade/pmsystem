@@ -28,8 +28,11 @@ function Home() {
   return (
     <>
       {/* parallax */}
+      <section>
+
       <section className="home" id="home">
         <h1> Find your dream job now</h1>
+      </section>
       </section>
       {/* paralax end */}
       {/* icon section start */}
