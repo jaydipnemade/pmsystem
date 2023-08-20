@@ -185,7 +185,7 @@ const UserRegistration = () => {
               required
               className="uinput"
             />
-            <Row className="mb-3 uinput" style={{margin: "4px 0;"}}>
+            <Row className="mb-3 input1" style={{ margin: "4px 0;" }}>
               <Form.Group as={Col} controlId="formGridCity">
                 <input
                   type="text"
@@ -210,24 +210,29 @@ const UserRegistration = () => {
                 />
               </Form.Group>
             </Row>
-            <label htmlFor="dob">
-              <h2>Date of Birth</h2>
-            </label>
-            <Row>
-              <input
-                type="date"
-                id="dob"
-                name="dob"
-                onChange={handleChange}
-                value={data.dob}
-                required
-                className="uinput"
-              />
+
+            <Row className="mb-3 input1" style={{ margin: "4px 0;" }}>
+              <Form.Group as={Col} controlId="formGridCity">
+                <center>
+                  <label htmlFor="dob">
+                    <h2>Date of Birth:-</h2>
+                  </label>
+                </center>
+              </Form.Group>
+              <Form.Group as={Col} controlId="formGridCity">
+                <input
+                  type="date"
+                  id="dob"
+                  name="dob"
+                  onChange={handleChange}
+                  value={data.dob}
+                  required
+                  className="uinput"
+                />
+              </Form.Group>
             </Row>
-            <label htmlFor="password">
-              <h2>Password</h2>
-            </label>
-            <Row className="mb-3 ">
+            <label htmlFor="password">{/* <h2>Password</h2> */}</label>
+            <Row className="mb-3 input2">
               <Form.Group as={Col} controlId="formGridCity">
                 <input
                   type="password"
