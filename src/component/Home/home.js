@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
 import "./home.css";
+import { Container, Row, Col } from "react-bootstrap";
 
 function Home() {
   useEffect(() => {
@@ -30,7 +32,6 @@ function Home() {
         <h1> Find your dream job now</h1>
       </section>
       {/* paralax end */}
-
       {/* icon section start */}
       <section className="iconsContainer">
         <div className="icons">
@@ -55,13 +56,49 @@ function Home() {
             <p>Recruiters</p>
           </div>
         </div>
-        
       </section>
-
       {/* icon section end  */}
 
-      {/* service section start */}
+      {/* resume builder function */}
 
+      <section>
+        <Card body>
+          <Container className="ResumeBuilder">
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <Link to={"/ResumeBuilder"} className="logo">
+                <div style={{ flex: 1, padding: "1 rem" }}>
+                  <img
+                    src={
+                      "https://static.naukimg.com/s/0/0/i/ff-services-ot.png"
+                    }
+                    className="img-resume-builder"
+                    alt="no img found"
+                    style={{ maxWidth: "100%", height: "auto" }}
+                  />
+                </div>
+              </Link>
+              <a href="/ResumeBuilder" id="ResumeBuilder"></a>
+              <div style={{ flex: 1, padding: "0.5rem", fontSize: "large" }}>
+                {/* Your content */}
+                <h1>Accelerate your job search with premium services</h1>
+                <h3>
+                  Services to help you get hired, faster: from preparing your
+                  CV, getting recruiter attention, finding the right jobs, and
+                  more!
+                </h3>
+              </div>
+            </div>
+          </Container>
+        </Card>
+      </section>
+
+      {/* service section start */}
       <section id="Services" className="services">
         <h1 className="heading">
           Sponsored <span>Companies</span>
