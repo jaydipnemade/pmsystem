@@ -173,89 +173,81 @@ const UserRegistration = () => {
     <>
       <section>
         <div className="UserRegistration_container">
-          <form className="form_container" onSubmit={handleFormSubmit}>
+          <form className="Regform_container" onSubmit={handleFormSubmit}>
             <h1>Create Account</h1>
+            <div className="signup_form_container">
+              <Row className="mb-3 input1">
+                <Form.Group as={Col} controlId="formGridCity">
+                  <input
+                    type="text"
+                    name="UserName"
+                    placeholder="User Name"
+                    onChange={handleChange}
+                    value={data.UserName}
+                    required
+                    className="user"
+                  />
+                </Form.Group>
+              </Row>
 
-            <input
-              type="text"
-              name="UserName"
-              placeholder="User Name"
-              onChange={handleChange}
-              value={data.UserName}
-              required
-              className="uinput"
-            />
-            <Row className="mb-3 input1" style={{ margin: "4px 0;" }}>
-              <Form.Group as={Col} controlId="formGridCity">
-                <input
-                  type="text"
-                  placeholder="Mobile Number"
-                  name="mob"
-                  onChange={handleChange}
-                  value={data.mob}
-                  required
-                  className="uinput"
-                />
-              </Form.Group>
-              <Form.Group as={Col} controlId="formGridCity">
-                <label htmlFor="email">{/* <h2>Email</h2> */}</label>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  onChange={handleChange}
-                  value={data.email}
-                  required
-                  className="uinput"
-                />
-              </Form.Group>
-            </Row>
-
-            <Row className="mb-3 input1" style={{ margin: "4px 0;" }}>
-              <Form.Group as={Col} controlId="formGridCity">
-                <center>
-                  <label htmlFor="dob">
-                    <h2>Date of Birth:-</h2>
-                  </label>
-                </center>
-              </Form.Group>
-              <Form.Group as={Col} controlId="formGridCity">
-                <input
-                  type="date"
-                  id="dob"
-                  name="dob"
-                  onChange={handleChange}
-                  value={data.dob}
-                  required
-                  className="uinput"
-                />
-              </Form.Group>
-            </Row>
-            <label htmlFor="password">{/* <h2>Password</h2> */}</label>
-            <Row className="mb-3 input2">
-              <Form.Group as={Col} controlId="formGridCity">
-                <input
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  onChange={handleChange}
-                  value={data.password}
-                  required
-                  className="uinput"
-                />
-              </Form.Group>
-              <Form.Group as={Col} controlId="formGridState">
-                <input
-                  type="password"
-                  placeholder="Confirm Password"
-                  name="confirmPassword"
-                  onChange={handleChange}
-                  // value={data.password}
-                  required
-                  className="uinput"
-                />
-              </Form.Group>
-            </Row>
+              <Row className="mb-3 input1">
+                <Form.Group as={Col} controlId="formGridCity">
+                  <input
+                    type="text"
+                    placeholder="Mobile Number"
+                    name="mob"
+                    onChange={handleChange}
+                    value={data.mob}
+                    required
+                    className="uinput"
+                  />
+                  <center>
+                    <label htmlFor="dob">
+                      <h2>Date of Birth:-</h2>
+                    </label>
+                  </center>
+                  <input
+                    type="password"
+                    placeholder="Password"
+                    name="password"
+                    onChange={handleChange}
+                    value={data.password}
+                    required
+                    className="uinput"
+                  />
+                </Form.Group>
+                <Form.Group as={Col} controlId="formGridCity">
+                  <label htmlFor="email">{/* <h2>Email</h2> */}</label>
+                  <input
+                    type="email"
+                    placeholder="Email"
+                    name="email"
+                    onChange={handleChange}
+                    value={data.email}
+                    required
+                    className="uinput"
+                  />
+                  <input
+                    type="date"
+                    id="dob"
+                    name="dob"
+                    onChange={handleChange}
+                    value={data.dob}
+                    required
+                    className="uinput"
+                  />
+                  <input
+                    type="password"
+                    placeholder="Confirm Password"
+                    name="confirmPassword"
+                    onChange={handleChange}
+                    // value={data.password}
+                    required
+                    className="uinput"
+                  />
+                </Form.Group>
+              </Row>
+            </div>
 
             {error && <div className="error_msg">{error}</div>}
             <button type="submit" className="green_btn">
