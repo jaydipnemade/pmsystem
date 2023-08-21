@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Card from "react-bootstrap/Card";
 import "./home.css";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Carousel } from "react-bootstrap";
 
 function Home() {
   useEffect(() => {
@@ -29,10 +29,9 @@ function Home() {
     <>
       {/* parallax */}
       <section>
-
-      <section className="home" id="home">
-        <h1> Find your dream job now</h1>
-      </section>
+        <section className="home" id="home">
+          <h1> Find your dream job now</h1>
+        </section>
       </section>
       {/* paralax end */}
       {/* icon section start */}
@@ -86,7 +85,7 @@ function Home() {
                   />
                 </div>
               </Link>
-              <a href="/ResumeBuilder" id="ResumeBuilder"></a>
+
               <div style={{ flex: 1, padding: "0.5rem", fontSize: "large" }}>
                 {/* Your content */}
                 <h1>Accelerate your job search with premium services</h1>
@@ -99,6 +98,58 @@ function Home() {
             </div>
           </Container>
         </Card>
+      </section>
+      <section>
+        <Carousel  className="carousel-image">
+          <Carousel.Item interval={1000}>
+            <Row className="mb-3">
+              <Col md={3}>
+                <div className="carousel">
+                  <img src={require("./media/carousel1.png")} alt="..." />
+                </div>
+              </Col>
+              <Col md={3}>
+                <div>
+                  <img src={require("./media/carousel2.png")} alt="..." />
+                </div>
+              </Col>
+              <Col md={3}>
+                <div>
+                  <img src={require("./media/carousel3.png")} alt="..." />
+                </div>
+              </Col>
+              <Col md={3}>
+                <div>
+                  <img src={require("./media/carousel4.png")} alt="..." />
+                </div>
+              </Col>
+            </Row>
+          </Carousel.Item>
+          <Carousel.Item interval={2000}>
+            <Row className="mb-3">
+              <Col md={3}>
+                <div className="carousel">
+                  <img src={require("./media/carousel1.png")} alt="..." />
+                </div>
+              </Col>
+              <Col md={3}>
+                <div>
+                  <img src={require("./media/carousel2.png")} alt="..." />
+                </div>
+              </Col>
+              <Col md={3}>
+                <div>
+                  <img src={require("./media/carousel3.png")} alt="..." />
+                </div>
+              </Col>
+              <Col md={3}>
+                <div>
+                  <img src={require("./media/carousel4.png")} alt="..." />
+                </div>
+              </Col>
+            </Row>
+          </Carousel.Item>
+        </Carousel>
       </section>
 
       {/* service section start */}

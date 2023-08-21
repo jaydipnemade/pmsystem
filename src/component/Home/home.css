@@ -255,3 +255,11 @@ section {
   text-decoration-line: underline;
 }
 /*Footer End*/
+
+.carousel-image img{
+    width: 40% !important; 
+  height:auto !important; 
+  display: flex;
+  justify-content: center;
+  margin-left: 7rem;
+}
