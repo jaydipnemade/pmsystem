@@ -74,4 +74,20 @@ section {
 }
 
 
+
+
+.icons{
+  margin-top: 10px;
+}
+
+.row{
+   display: flex;
+
+}
+
+.Slider{
+   display: flex;
+}
+
+
 /* footer css end */

@@ -4,8 +4,9 @@ import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import Navbar from "./component/Navbar/Navbar";
 import Home from "./component/Home/Home";
 import ResumeBuilder from "./component/ResumeBuilder/ResumeBuilder";
-import UserLogin from "./component/UserLogin/UserLogin";
 import UserRegistration from "./component/UserRegistration/UserRegistration";
+import Userlogin from "./component/UserLogin/Userlogin";
+import Footer from "./component/Footer/Footer";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
         <Route path="/UserRegistration" element={<UserRegistration />} />
       </Routes>
     </BrowserRouter>
+    // <Userlogin/>
+    // <Footer/>
   );
 }
 

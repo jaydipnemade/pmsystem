@@ -1,134 +1,71 @@
-import { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Button from "react-bootstrap/Button";
-import Col from "react-bootstrap/Col";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import axios from "axios";
+import { useState } from "react";
 import "./Userlogin.css";
-import React, { Component } from "react";
-const api = axios.create({
-  baseURL: "http://localhost:8080/api/v1/",
-});
 
-const UserLogin = () => {
-  const [data, setData] = useState({
-    email: "",
-    password: "",
-  });
-  const [error, setError] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      // User already logged in, redirect to home page
-      navigate("/");
-    }
-  }, [navigate]);
-
-  const handleChange = ({ target }) => {
-    setData((prevState) => ({ ...prevState, [target.name]: target.value }));
-
-    if (target.name === "email") {
-      if (!emailRegex.test(target.value)) {
-        setEmailError("Invalid email format");
-      } else {
-        setEmailError("");
-      }
-    }
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/login");
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    try {
-      const response = await api.post("/login", data);
-
-      if (response.data) {
-        const token = response.data.token;
-        localStorage.setItem("token", token);
-        navigate("/home");
-      } else {
-        setError("Invalid username or password");
-      }
-    } catch (error) {
-      setError(error.message);
-      setTimeout(() => {
-        setError("");
-      }, 5000); // Clear error message after 5 seconds
-    }
-  };
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  useEffect(() => {
-    const handleScroll = (event) => {
-      if (window.scrollY > 0) {
-        document.querySelector(".header").classList.add("active");
-      } else {
-        document.querySelector(".header").classList.remove("active");
-      }
-      let menu = document.querySelector("#menu-btn1");
-      let navbar = document.querySelector(".navbar");
-      menu.classList.remove("fa-times");
-      navbar.classList.remove("active");
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+const Userlogin = () => {
+  const [email,setEmail] = useState("");
+  const [password,setPassword] = useState("");
+  const [allEntry,setAllEntry] = useState([]);
+  
+  const submitForm = (e)=>{
+  e.preventDefault();
+  const newEntry = {email:email,password:password};
+  setAllEntry([...allEntry,newEntry]);
+  alert("login successful");
+  }
 
   return (
     <>
-      <section>
-        <div className="login_container">
-          <div className="login_form_container">
-            <div className="left">
-              <form className="form_container" onSubmit={handleSubmit}>
-                <h1>Login to Your Account</h1>
-                <input
-                  type="email"
-                  placeholder="Email"
-                  name="email"
-                  onChange={handleChange}
-                  value={data.email}
-                  required
-                  className="input"
-                />
-                {emailError && <div className="error_msg">{emailError}</div>}
-                <input
-                  type="password"
-                  placeholder="Password"
-                  name="password"
-                  onChange={handleChange}
-                  value={data.password}
-                  required
-                  className="input"
-                />
-                {error && <div className="error_msg">{error}</div>}
-                <button type="submit" className="white_btn">
-                  Sign In
-                </button>
-                <h3>
-                  Don't have an account ? Create
-                  <Link to="/UserRegistration"> One</Link>
-                </h3>
-              </form>
+        <div className="row justify-content-center">
+            <div className="col-sm-12 col-md-4  m-5  py-5 rounded shadow-lg  p-3 mb-5 rounded">
+                <div className="text mb-3 text-center">Login</div>
+                <form className="form" action="" onSubmit={submitForm}>
+
+                    {/* Email Input */}
+                    <div className="Email">
+                        <div className="mb-2">Email ID</div>
+                        <input  
+                            className="email-input form-control form-control-lg mb-2" 
+                            type="email"  
+                            placeholder="Enter Email ID"
+                            value={email}
+                            onChange={(e)=>setEmail(e.target.email)}
+                            required
+                        />
+
+                    </div>
+
+                    {/* Password Input */}
+                    <div className="Password">
+                            <div className="mb-2">Password</div>
+                            <input 
+                                className="password-input form-control form-control-lg mb-2"
+                                type="password" 
+                                placeholder="Enter Password"
+                                value={password}
+                                onChange={(e)=>setPassword(e.target.password)}
+                                required
+                            />
+                    </div>
+                    
+                    {/* Login Button */}
+                    <div className="Button mt-4">
+                            <button 
+                                type="submit"
+                                className=" Button w-100 btn btn-primary btn-lg mb-5">
+                                Login
+                            </button>
+                    </div>
+                        
+
+                    <div className="mb-2 text-center">
+                        Don't have an Account?
+                    </div>
+
+                </form>
             </div>
-          </div>
-        </div>
-      </section>
+        </div>  
     </>
   );
-};
+}
 
-export default UserLogin;
+export default Userlogin;
