@@ -8,6 +8,7 @@ import UserLogin from "./component/UserLogin/UserLogin";
 import UserRegistration from "./component/UserRegistration/UserRegistration";
 import AboutUs from "./component/AboutUs/AboutUs";
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -20,6 +21,7 @@ function App() {
         <Route path="/UserRegistration" element={<UserRegistration />} />
         <Route path="/AboutUs" element={<AboutUs />} />
       </Routes>
+     
     </BrowserRouter>
   );
 }
