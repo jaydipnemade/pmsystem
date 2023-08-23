@@ -32,10 +32,9 @@ section {
   padding: 2rem 9%;
 }
 
-
 /* footer css start */
 .footer {
-  background: var(--light-yellow);
+  background: var(--light-colour);
   position: relative;
 }
 
@@ -73,19 +72,17 @@ section {
   padding-right: 2rem;
 }
 
-
-.icons{
+.icons {
   margin-top: 10px;
 }
 
-.row{
-   display: flex;
-
+.row {
+  display: flex;
 }
 
-.Slider{
-   display: flex;
+.Slider {
+  display: flex;
+  justify-content: center;
 }
-
 
 /* footer css end */
