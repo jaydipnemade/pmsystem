@@ -6,8 +6,6 @@ import Home from "./component/Home/Home";
 import ResumeBuilder from "./component/ResumeBuilder/ResumeBuilder";
 import UserLogin from "./component/UserLogin/UserLogin";
 import UserRegistration from "./component/UserRegistration/UserRegistration";
-import AboutUs from "./component/AboutUs/AboutUs";
-
 
 function App() {
   return (
@@ -23,6 +21,7 @@ function App() {
       </Routes>
      
     </BrowserRouter>
+    // <Footer/>
   );
 }
 
