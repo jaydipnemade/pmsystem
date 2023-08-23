@@ -64,13 +64,13 @@ function Navbar() {
           >
             AboutUs
           </Link>
-          <Link
+          {/* <Link
             to={"/Services"}
             className="nav-link active"
             style={{ backgroundColor: "transparent" }}
           >
             Services
-          </Link>
+          </Link> */}
           {/* Add the rounded search bar */}
           <div className="rounded-search">
             <input
@@ -79,7 +79,9 @@ function Navbar() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button className="btn1" onClick={() => handleSearch(searchQuery)}>Search</button>
+            <button className="btn1" onClick={() => handleSearch(searchQuery)}>
+              <i className="fa-solid fa-magnifying-glass"></i>
+            </button>
           </div>
           <div className="dropdown">
             <button className="dropdown-btn"> | For Employers</button>
