@@ -1,0 +1,108 @@
+/* Apply general styling to the MeetOurTeam page */
+.meet-our-team-page {
+    padding: 40px 0;
+  }
+  
+  /* Styling for the team members */
+  .team-section {
+    text-align: center;
+  }
+  
+  .section-title {
+    font-size: 32px;
+    margin-top: 100px;
+    color: blue;
+   
+  }
+  
+  .team-member {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.2s;
+    margin-bottom: 30px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .team-member:hover {
+    transform: translateY(-5px);
+   background-color: lightblue;
+   color: blue;
+  }
+  
+  .team-member-image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+  }
+  
+  .team-member-details h3 {
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  .team-member-details .title {
+    font-size: 16px;
+    color: #777;
+    margin-top: 5px;
+  }
+  
+  .team-member-details .description {
+    font-size: 14px;
+    color: #444;
+    margin-top: 10px;
+  }
+  .team-member-details .description:hover {
+    color: blue;
+  }
+  /* footer css */
+.footer {
+    background-color: #f7f7f7;
+    padding: 30px 0;
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .footer-link {
+    color: #666;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  .footer-link:hover {
+    color: #333;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 991px) {
+    .team-member {
+      text-align: center;
+    }
+    
+    .team-member-details {
+      text-align: center;
+      align-items: center;
+    }
+    
+    .team-member-details h3 {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+    
+    .team-member-details .title {
+      font-size: 14px;
+      margin-top: 5px;
+    }
+    
+    .team-member-details .description {
+      font-size: 12px;
+      margin-top: 10px;
+    }
+  }
+  

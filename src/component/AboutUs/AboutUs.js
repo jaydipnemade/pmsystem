@@ -1,7 +1,7 @@
 import React from "react";
-import { FaBriefcase, FaHandsHelping, FaChalkboardTeacher } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom"; 
+import MeetOurTeam from "./MeetOurTeam";
 import "./aboutUs.css"; // Import your custom CSS
 
 function AboutUs() {
@@ -65,8 +65,8 @@ function AboutUs() {
               <p>
               PMS Systsem's leadership team is diverse, dedicated and committed to empowering our employees to fulfill our mission: We help people get jobs. By fostering strong partnerships and collaboration, they serve and support job seekers, employers, society and our employees.
               </p>
-              <Link to="/meet-our-team" className="btn btn-primary">
-                <h3>Meet Our Team</h3>
+              <Link to="/MeetOurTeam" className="btn btn-primary">
+                <h3>MeetOurTeam</h3>
               </Link>
             </div>
           </div>
