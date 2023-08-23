@@ -93,25 +93,7 @@ function AboutUs() {
         </div>
       
     </section>
-    <footer className="footer">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <p>&copy; 2023 Your Company. All rights reserved.</p>
-            </div>
-            <div className="col-md-6 text-md-right">
-              <Link to="/privacy-policy" className="footer-link">
-                Privacy Policy
-              </Link>
-              <span className="mx-2">|</span>
-              <Link to="/terms-of-use" className="footer-link">
-                Terms of Use
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
-
+    
     
  </div>
 );
