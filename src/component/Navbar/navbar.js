@@ -3,10 +3,9 @@ import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-
 function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchResults, setSearchResults] = useState([]); 
+  const [searchResults, setSearchResults] = useState([]);
 
   const handleSearch = (query) => {
     // In a real application, you would perform an API call or search logic here
@@ -29,7 +28,7 @@ function Navbar() {
   const navigate = useNavigate();
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/UserLogin");
   };
   return (
     <>
@@ -37,7 +36,7 @@ function Navbar() {
         <div id="menu-btn1" onClick={menuOnclick} className="fas fa-bars"></div>
 
         <Link to={"/home"} className="logo">
-          <span style={{ fontSize: "150%" }}>PMS</span> System.
+          <span style={{ fontSize: "150%" }}>PMS</span>
           <i
             className="fa-solid fa-award"
             style={{ color: "#000000", fontSize: "150%" }}
@@ -80,10 +79,10 @@ function Navbar() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button onClick={() => handleSearch(searchQuery)}>Search</button>
+            <button className="btn1" onClick={() => handleSearch(searchQuery)}>Search</button>
           </div>
           <div className="dropdown">
-            <button className="dropdown-btn">For Employers</button>
+            <button className="dropdown-btn"> | For Employers</button>
             <div className="dropdown-content">
               <Link to={"/CreateJob"}>Post a Job</Link>
               <Link to={"/recruiterLogin"}>Login</Link>
@@ -91,18 +90,9 @@ function Navbar() {
             </div>
           </div>
 
-          {/* <a href="/Home#Services"> Services</a> */}
-
-          {/* <Link
-            to={"/UserDashboard"}
-            className="nav-link active"
-            style={{ backgroundColor: "transparent" }}
-          >
-            <i class="fa-solid fa-bell fa-shake fa-2xl"></i>
-          </Link> */}
           {isLoggedIn && (
             <Link
-              to={"/UserDashboard"}
+              to={"/Home"}
               className="nav-link active"
               style={{ backgroundColor: "transparent" }}
             >
@@ -138,7 +128,7 @@ function Navbar() {
             </button>
           ) : (
             <Link
-              to={"/login"}
+              to={"/UserLogin"}
               className="nav-link active"
               style={{ backgroundColor: "transparent" }}
             >

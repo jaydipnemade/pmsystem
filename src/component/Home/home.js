@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Card from "react-bootstrap/Card";
 import "./home.css";
+import { Container, Row, Col, Carousel } from "react-bootstrap";
 
 function Home() {
   useEffect(() => {
@@ -26,11 +28,12 @@ function Home() {
   return (
     <>
       {/* parallax */}
-      <section className="home" id="home">
-        <h1> Find your dream job now</h1>
+      <section>
+        <section className="home" id="home">
+          <h1> Find your dream job now</h1>
+        </section>
       </section>
       {/* paralax end */}
-
       {/* icon section start */}
       <section className="iconsContainer">
         <div className="icons">
@@ -55,13 +58,101 @@ function Home() {
             <p>Recruiters</p>
           </div>
         </div>
-        
       </section>
-
       {/* icon section end  */}
 
-      {/* service section start */}
+      {/* resume builder function */}
 
+      <section>
+        <Card body>
+          <Container className="ResumeBuilder">
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                alignItems: "center",
+              }}
+            >
+              <Link to={"/ResumeBuilder"} className="logo">
+                <div style={{ flex: 1, padding: "1 rem" }}>
+                  <img
+                    src={
+                      "https://static.naukimg.com/s/0/0/i/ff-services-ot.png"
+                    }
+                    className="img-resume-builder"
+                    alt="no img found"
+                    style={{ maxWidth: "100%", height: "auto" }}
+                  />
+                </div>
+              </Link>
+
+              <div style={{ flex: 1, padding: "0.5rem", fontSize: "large" }}>
+                {/* Your content */}
+                <h1>Accelerate your job search with premium services</h1>
+                <h3>
+                  Services to help you get hired, faster: from preparing your
+                  CV, getting recruiter attention, finding the right jobs, and
+                  more!
+                </h3>
+              </div>
+            </div>
+          </Container>
+        </Card>
+      </section>
+      <section>
+        <Carousel  className="carousel-image">
+          <Carousel.Item interval={1000}>
+            <Row className="mb-3">
+              <Col md={3}>
+                <div className="carousel">
+                  <img src={require("./media/carousel1.png")} alt="..." />
+                </div>
+              </Col>
+              <Col md={3}>
+                <div>
+                  <img src={require("./media/carousel2.png")} alt="..." />
+                </div>
+              </Col>
+              <Col md={3}>
+                <div>
+                  <img src={require("./media/carousel3.png")} alt="..." />
+                </div>
+              </Col>
+              <Col md={3}>
+                <div>
+                  <img src={require("./media/carousel4.png")} alt="..." />
+                </div>
+              </Col>
+            </Row>
+          </Carousel.Item>
+          <Carousel.Item interval={2000}>
+            <Row className="mb-3">
+              <Col md={3}>
+                <div className="carousel">
+                  <img src={require("./media/carousel1.png")} alt="..." />
+                </div>
+              </Col>
+              <Col md={3}>
+                <div>
+                  <img src={require("./media/carousel2.png")} alt="..." />
+                </div>
+              </Col>
+              <Col md={3}>
+                <div>
+                  <img src={require("./media/carousel3.png")} alt="..." />
+                </div>
+              </Col>
+              <Col md={3}>
+                <div>
+                  <img src={require("./media/carousel4.png")} alt="..." />
+                </div>
+              </Col>
+            </Row>
+          </Carousel.Item>
+        </Carousel>
+      </section>
+
+      {/* service section start */}
       <section id="Services" className="services">
         <h1 className="heading">
           Sponsored <span>Companies</span>
