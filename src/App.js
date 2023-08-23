@@ -6,6 +6,7 @@ import Home from "./component/Home/Home";
 import ResumeBuilder from "./component/ResumeBuilder/ResumeBuilder";
 import UserLogin from "./component/UserLogin/UserLogin";
 import UserRegistration from "./component/UserRegistration/UserRegistration";
+import Footer from "./component/Footer/Footer";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/UserRegistration" element={<UserRegistration />} />
       </Routes>
     </BrowserRouter>
+    // <Footer/>
   );
 }
 
