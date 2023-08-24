@@ -7,6 +7,8 @@ import ResumeBuilder from "./component/ResumeBuilder/ResumeBuilder";
 import UserLogin from "./component/UserLogin/UserLogin";
 import UserRegistration from "./component/UserRegistration/UserRegistration";
 import Footer from "./component/Footer/Footer";
+import RecruiterLogin from "./component/RecruiterLogin/RecruiterLogin";
+
 
 function App() {
   return (
@@ -18,9 +20,11 @@ function App() {
         <Route path="/ResumeBuilder" element={<ResumeBuilder />} />
         <Route path="/UserLogin" element={<UserLogin />} />
         <Route path="/UserRegistration" element={<UserRegistration />} />
+        <Route path="/RecruiterLogin" element={<RecruiterLogin/>}  />
       </Routes>
+      <Footer/>
     </BrowserRouter>
-    // <Footer/>
+  
   );
 }
 

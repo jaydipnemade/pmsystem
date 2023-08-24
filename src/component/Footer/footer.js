@@ -7,9 +7,9 @@ import Slider from "../Slider/Slider";
 
 const Footer =()=>{
     return(
-    <footer className="justify-content-around">
+    <footer className="justify-content-around" style={{backgroundColor:"white"}}>
         <div className="container p-3">
-              <div className="row">
+              <div className="row my-5">
 
                   <div className="col-md-3 col-6 sm-6 p-3">
                         <span style={{ color: "#006622" }}>PMS</span>
@@ -68,7 +68,7 @@ const Footer =()=>{
         <hr />
         <div className="row">
             <div className="col-12 text-center">
-                <p className="">All rights reserved &copy; 2023 info Edge(India)Ltd.</p>
+                <p className="">All rights reserved &copy; 2023 info Edge(India) Ltd.</p>
                
             </div>
             
