@@ -82,6 +82,9 @@
   background-color: #0056b3;
   border-color: #0056b3;
 }
+.button h3{
+  padding-top: 3%;
+}
 /* footer css */
 .footer {
   background-color: #f7f7f7;

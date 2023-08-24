@@ -2,6 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./MeetOurTeam.css";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const teamMembers = [
   {
@@ -12,7 +13,7 @@ const teamMembers = [
       "Mayur Chilawar is a visionary leader with a passion for innovation and growth.",
   },
   {
-    name: "Jaydep Nemade",
+    name: "Jaydip Nemade",
     title: "Team Member",
     imageUrl: process.env.PUBLIC_URL + "/PmsImages/rushikesh.jpg",
     description:
@@ -50,6 +51,25 @@ const teamMembers = [
 ];
 
 function MeetOurTeam() {
+  useEffect(() => {
+    const handleScroll = (event) => {
+      if (window.scrollY > 0) {
+        document.querySelector(".header").classList.add("active");
+      } else {
+        document.querySelector(".header").classList.remove("active");
+      }
+      let menu = document.querySelector("#menu-btn1");
+      let navbar = document.querySelector(".navbar");
+      menu.classList.remove("fa-times");
+      navbar.classList.remove("active");
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
   return (
     <div className="meet-our-team-page">
       <section className="team-section">
@@ -73,24 +93,7 @@ function MeetOurTeam() {
           </div>
         </div>
       </section>
-      <footer className="footer">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-6">
-              <p>&copy; 2023 Your Company. All rights reserved.</p>
-            </div>
-            <div className="col-md-6 text-md-right">
-              <Link to="/privacy-policy" className="footer-link">
-                Privacy Policy
-              </Link>
-              <span className="mx-2">|</span>
-              <Link to="/terms-of-use" className="footer-link">
-                Terms of Use
-              </Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      
     </div>
   );
 }

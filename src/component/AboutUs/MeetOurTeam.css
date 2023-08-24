@@ -11,7 +11,7 @@
   .section-title {
     font-size: 32px;
     margin-top: 100px;
-    color: blue;
+    color: rgb(0, 0, 40);
    
   }
   
@@ -30,8 +30,8 @@
   
   .team-member:hover {
     transform: translateY(-5px);
-   background-color: lightblue;
-   color: blue;
+   background-color:  #bcceff;
+   color: rgb(0, 0, 36);
   }
   
   .team-member-image img {
@@ -59,7 +59,7 @@
     margin-top: 10px;
   }
   .team-member-details .description:hover {
-    color: blue;
+    color: rgb(253, 253, 253);
   }
   /* footer css */
 .footer {

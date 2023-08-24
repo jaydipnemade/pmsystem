@@ -8,6 +8,8 @@ import UserLogin from "./component/UserLogin/UserLogin";
 import UserRegistration from "./component/UserRegistration/UserRegistration";
 import Footer from "./component/Footer/Footer";
 import AboutUs from "./component/AboutUs/AboutUs";
+import MeetOurTeam from "./component/AboutUs/MeetOurTeam";
+import NotFound from "./component/NotFound/NotFound";
 
 function App() {
   return (
@@ -20,6 +22,9 @@ function App() {
         <Route path="/UserLogin" element={<UserLogin />} />
         <Route path="/UserRegistration" element={<UserRegistration />} />
         <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/MeetOurTeam" element={<MeetOurTeam />} />
+        
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </BrowserRouter>
