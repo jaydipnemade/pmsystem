@@ -54,7 +54,7 @@ const UserLogin = () => {
       if (response.data) {
         const token = response.data.token;
         localStorage.setItem("token", token);
-        navigate("/home");
+        navigate("/Home");
       } else {
         setError("Invalid username or password");
       }

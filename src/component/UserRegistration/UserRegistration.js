@@ -8,9 +8,9 @@ import Form from "react-bootstrap/Form";
 const UserRegistration = () => {
   const [data, setData] = useState({
     UserName: "",
-    mob: "",
+    // mob: "",
     email: "",
-    dob: "",
+    // dob: "",
     password: "",
     confirmPasword: " ",
   });
@@ -192,7 +192,8 @@ const UserRegistration = () => {
 
               <Row className="mb-3 input1">
                 <Form.Group as={Col} controlId="formGridCity">
-                  <input
+                  <h2>Enter Email Id</h2>
+                  {/* <input
                     type="text"
                     placeholder="Mobile Number"
                     name="mob"
@@ -200,11 +201,11 @@ const UserRegistration = () => {
                     value={data.mob}
                     required
                     className="uinput"
-                  />
+                  /> */}
                   <center>
-                    <label htmlFor="dob">
+                    {/* <label htmlFor="dob">
                       <h2>Date of Birth:-</h2>
-                    </label>
+                    </label> */}
                   </center>
                   <input
                     type="password"
@@ -227,7 +228,7 @@ const UserRegistration = () => {
                     required
                     className="uinput"
                   />
-                  <input
+                  {/* <input
                     type="date"
                     id="dob"
                     name="dob"
@@ -235,7 +236,7 @@ const UserRegistration = () => {
                     value={data.dob}
                     required
                     className="uinput"
-                  />
+                  /> */}
                   <input
                     type="password"
                     placeholder="Confirm Password"
