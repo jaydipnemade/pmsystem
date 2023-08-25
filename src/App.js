@@ -11,6 +11,7 @@ import AboutUs from "./component/AboutUs/AboutUs";
 import MeetOurTeam from "./component/AboutUs/MeetOurTeam";
 import NotFound from "./component/NotFound/NotFound";
 import RecruiterLogin from "./component/RecruiterLogin/RecruiterLogin";
+import UserProfile from "./component/UserProfile/UserProfile";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/MeetOurTeam" element={<MeetOurTeam />} />
         <Route path="/RecruiterLogin" element={<RecruiterLogin />} />
+        <Route path="/UserProfile" element={<UserProfile />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

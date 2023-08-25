@@ -87,7 +87,7 @@ function Navbar() {
             <button className="dropdown-btn"> | For Employers</button>
             <div className="dropdown-content">
               <Link to={"/CreateJob"}>Post a Job</Link>
-              <Link to={"/RecruiterLogin"}>Login</Link>
+              <Link to={"/UserLogin"}>Login</Link>
               {/* Add more dropdown items as needed */}
             </div>
           </div>
