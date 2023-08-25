@@ -58,47 +58,47 @@ const UserRegistration = () => {
   //   //   setError(error.message || "An error occurred. Please try again later.");
   //   // }
   // };
+const handleFormSubmit = async (e) => {
+  e.preventDefault();
+  if (!isFormValid()) {
+    return;
+  }
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
-    if (!isFormValid()) {
-      return;
+  try {
+    const url = "http://localhost:8080/api/v1/signup";
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: data.UserName,
+        email: data.email,
+        password: data.password,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || "An error occurred.");
     }
 
-    try {
-      const url = "http://localhost:8080/api/v1/signup";
-      const response = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: data.UserName,
-          phone: data.mob,
-          email: data.email,
-          dob: data.dob,
-          password: data.password,
-        }),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || "An error occurred.");
-      }
-
-      navigate("/login");
-    } catch (error) {
-      setError(error.message || "An error occurred. Please try again later.");
-    }
-  };
+    navigate("/login");
+  } catch (error) {
+    setError(error.message || "An error occurred. Please try again later.");
+    setTimeout(() => {
+      setError(""); // Clear the error message after 2 seconds
+    }, 2000);
+  }
+};
 
   const isFormValid = () => {
     if (
       data.UserName.trim() === "" ||
       data.email.trim() === "" ||
-      data.mob.trim() === "" ||
+      // data.mob.trim() === "" ||
       data.password.trim() === "" ||
-      data.dob.trim() === "" ||
+      // data.dob.trim() === "" ||
       data.confirmPassword.trim() === ""
     ) {
       setError("Please fill in all the fields.");
@@ -111,11 +111,11 @@ const UserRegistration = () => {
       return false;
     }
 
-    const mobRegex = /^\d{10}$/;
-    if (!mobRegex.test(data.mob.trim())) {
-      setError("Invalid mobile number.");
-      return false;
-    }
+    // const mobRegex = /^\d{10}$/;
+    // if (!mobRegex.test(data.mob.trim())) {
+    //   setError("Invalid mobile number.");
+    //   return false;
+    // }
 
     const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
     if (!passwordRegex.test(data.password)) {
@@ -129,22 +129,22 @@ const UserRegistration = () => {
       return false;
     }
 
-    const dobRegex = /^\d{4}-\d{2}-\d{2}$/;
-    if (!dobRegex.test(data.dob)) {
-      setError(
-        "Invalid date of birth format. Please use the YYYY-MM-DD format."
-      );
-      return false;
-    }
+    // const dobRegex = /^\d{4}-\d{2}-\d{2}$/;
+    // if (!dobRegex.test(data.dob)) {
+    //   setError(
+    //     "Invalid date of birth format. Please use the YYYY-MM-DD format."
+    //   );
+    //   return false;
+    // }
 
-    const today = new Date();
-    const dob = new Date(data.dob);
-    const ageDiff = today.getFullYear() - dob.getFullYear();
+    // const today = new Date();
+    // const dob = new Date(data.dob);
+    // const ageDiff = today.getFullYear() - dob.getFullYear();
 
-    if (ageDiff < 18) {
-      setError("You must be at least 18 years old to sign up.");
-      return false;
-    }
+    // if (ageDiff < 18) {
+    //   setError("You must be at least 18 years old to sign up.");
+    //   return false;
+    // }
 
     setError("");
     return true;
