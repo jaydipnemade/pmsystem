@@ -53,6 +53,13 @@ const UserProfile = () => {
     setLoading(true);
     setShouldNavigate(true);
   };
+  const MoveToContactInfo = () => {
+    // Find the element with the id "contactSection"
+    const section = document.getElementById("contactSection");
+
+    // Scroll to the section
+    section.scrollIntoView({ behavior: "smooth" });
+  };
 
   return (
     <>
@@ -90,9 +97,137 @@ const UserProfile = () => {
                 <Button size="lg" disabled={isLoading} onClick={handleClick}>
                   {isLoading ? "Loading…" : "Genrate Resume"}
                 </Button>
-                <Button size="lg" variant="outline-primary">
+                <Button
+                  size="lg"
+                  className="blue-border-button"
+                  onClick={MoveToContactInfo}
+                >
                   Contact Info.
                 </Button>
+                <Link to="/edit-profile">
+                  <Button size="lg" className="blue-border-button">
+                    Jobs Applied
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+          <div className="UserProfile_container">
+            <div className="UserProfile_form_container2">
+              <div>
+                <div className="internal_rounded-button">
+                  <Link to="/edit-profile">
+                    <i
+                      className="fa-solid fa-pencil fa-2xl"
+                      style={{ color: "#130f40" }}
+                    ></i>
+                  </Link>
+                </div>
+                <h1> About</h1>
+
+                <p>
+                  Enthusiastic CDAC student with a passion for technology and a
+                  drive to excel in the world of IT. Currently honing my skills
+                  in Advanced Computing, I am dedicated to learning and applying
+                  cutting-edge concepts to real-world challenges. I am eager to
+                  contribute my knowledge and creativity to innovative projects.
+                  As a proactive learner.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="UserProfile_container">
+            <div className="UserProfile_form_container2">
+              <div>
+                <div className="internal_rounded-button">
+                  <Link to="/edit-profile">
+                    <i
+                      className="fa-solid fa-pencil fa-2xl"
+                      style={{ color: "#130f40" }}
+                    ></i>
+                  </Link>
+                </div>
+                <h1> Skills</h1>
+
+                <p>
+                  Skills: C# · ASP.NET · Node.js · Express.js · REST APIs ·
+                  React.js · Spring Boot · Java · HTML5
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="UserProfile_container">
+            <div className="UserProfile_form_container2">
+              <div>
+                <div className="internal_rounded-button">
+                  <Link to="/edit-profile">
+                    <i
+                      className="fa-solid fa-pencil fa-2xl"
+                      style={{ color: "#130f40" }}
+                    ></i>
+                  </Link>
+                </div>
+                <h1> Experience</h1>
+
+                <p>
+                  2 Years
+                  <br /> Live Sound EngineerLive Sound Engineer Octave pro snl ·
+                  FreelanceOctave pro snl · Freelance May 2017 - Dec 2019 · 2
+                  yrs 8 mos May 2017 - Dec 2019 · 2 yrs 8 mos Pune, Maharashtra,
+                  India.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="UserProfile_container">
+            <div className="UserProfile_form_container2">
+              <div>
+                <div className="internal_rounded-button">
+                  <Link to="/edit-profile">
+                    <i
+                      className="fa-solid fa-pencil fa-2xl"
+                      style={{ color: "#130f40" }}
+                    ></i>
+                  </Link>
+                </div>
+                <h1> Project</h1>
+
+                <p>
+                  1 Month
+                  <br />
+                  The Personnel Management System (PMS) is a comprehensive
+                  software solution designed to streamline and automate various
+                  human resource management tasks within an organization. This
+                  system aims to improve the efficiency, accuracy, and
+                  accessibility of managing personnel-related information and
+                  processes.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="UserProfile_container" id="contactSection">
+            <div className="UserProfile_form_container2">
+              <div>
+                <div className="internal_rounded-button">
+                  <Link to="/edit-profile">
+                    <i
+                      className="fa-solid fa-pencil fa-2xl"
+                      style={{ color: "#130f40" }}
+                    ></i>
+                  </Link>
+                </div>
+                <h1> Contact Info</h1>
+
+                <p>
+                  1 Month
+                  <br />
+                  The Personnel Management System (PMS) is a comprehensive
+                  software solution designed to streamline and automate various
+                  human resource management tasks within an organization. This
+                  system aims to improve the efficiency, accuracy, and
+                  accessibility of managing personnel-related information and
+                  processes.
+                </p>
               </div>
             </div>
           </div>

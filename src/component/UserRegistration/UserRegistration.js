@@ -58,39 +58,39 @@ const UserRegistration = () => {
   //   //   setError(error.message || "An error occurred. Please try again later.");
   //   // }
   // };
-const handleFormSubmit = async (e) => {
-  e.preventDefault();
-  if (!isFormValid()) {
-    return;
-  }
-
-  try {
-    const url = "http://localhost:8080/api/v1/signup";
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: data.UserName,
-        email: data.email,
-        password: data.password,
-      }),
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json();
-      throw new Error(errorData.message || "An error occurred.");
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    if (!isFormValid()) {
+      return;
     }
 
-    navigate("/login");
-  } catch (error) {
-    setError(error.message || "An error occurred. Please try again later.");
-    setTimeout(() => {
-      setError(""); // Clear the error message after 2 seconds
-    }, 2000);
-  }
-};
+    try {
+      const url = "http://localhost:8080/api/v1/signup";
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: data.UserName,
+          email: data.email,
+          password: data.password,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || "An error occurred.");
+      }
+
+      navigate("/login");
+    } catch (error) {
+      setError(error.message || "An error occurred. Please try again later.");
+      setTimeout(() => {
+        setError(""); // Clear the error message after 2 seconds
+      }, 2000);
+    }
+  };
 
   const isFormValid = () => {
     if (
@@ -149,6 +149,15 @@ const handleFormSubmit = async (e) => {
     setError("");
     return true;
   };
+  // drop down who u r
+  const [selectedValue, setSelectedValue] = useState("");
+
+  const handleSelectChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+
+  // handle scroll
+
   useEffect(() => {
     const handleScroll = (event) => {
       if (window.scrollY > 0) {
@@ -202,11 +211,11 @@ const handleFormSubmit = async (e) => {
                     required
                     className="uinput"
                   /> */}
-                  <center>
-                    {/* <label htmlFor="dob">
-                      <h2>Date of Birth:-</h2>
-                    </label> */}
-                  </center>
+                
+                    <label htmlFor="YouAreA">
+                      <h2>I am a :-</h2>
+                    </label>
+                  
                   <input
                     type="password"
                     placeholder="Password"
@@ -228,15 +237,15 @@ const handleFormSubmit = async (e) => {
                     required
                     className="uinput"
                   />
-                  {/* <input
-                    type="date"
-                    id="dob"
-                    name="dob"
-                    onChange={handleChange}
-                    value={data.dob}
-                    required
-                    className="uinput"
-                  /> */}
+                  
+                  
+                    <select className="selectControl" value={selectedValue} onChange={handleSelectChange}>
+                      <option value="">Select</option>
+                      <option value="0">Chandidate</option>
+                      <option value="1">Recruter</option>
+                    </select>
+                    
+                
                   <input
                     type="password"
                     placeholder="Confirm Password"

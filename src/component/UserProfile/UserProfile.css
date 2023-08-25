@@ -36,7 +36,7 @@ section {
 }
 .UserProfile_container {
   width: 100%;
-  min-height: 100vh;
+  height: 100%;
   background-color: rgb(241, 244, 255);
   display: flex;
   /* align-items: center; */
@@ -105,24 +105,59 @@ section {
   margin-top: 33vh;
   margin-left: 70vw;
 }
-.UserProfileInfoContainer{
-    z-index: 1;
-    margin-top: 37vh;
-    margin-left: 2vw;
+.internal_rounded-button{
+    position: relative;
+     margin-top: 5vh !important;
+  margin-left: 70vw;
 }
-.UserProfileInfoContainer h1{
-    font-weight: bolder;
+.UserProfileInfoContainer {
+  z-index: 1;
+  margin-top: 37vh;
+  margin-left: 2vw;
 }
-.UserProfileInfoContainer p{
-    font-size: medium;
+.UserProfileInfoContainer h1 {
+  font-weight: bolder;
 }
-.UserProfileInfoContainer Button{
-    border-radius: 20px;
-    background-color: var(--light-blue);
-    color: #ffffff;
-    margin-right: 10px;
-    
+.UserProfileInfoContainer p {
+  font-size: medium;
 }
+.UserProfileInfoContainer Button {
+  border-radius: 20px;
+  background-color: var(--light-blue);
+  color: #ffffff;
+  margin-right: 10px;
+}
+.UserProfileInfoContainer .blue-border-button {
+  border-color: blue;
+  background-color: aliceblue;
+  color: #130f40;
+}
+.UserProfile_form_container2 {
+  width: 75vw !important;
+  height: 100%;
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 5px 7px 7px -2px rgb(0 0 0 / 50%),
+    0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+  /* margin-top: 10%; */
+  margin-bottom: 2rem;
+  /* margin-top: 15rem; */
+  background-color: white;
+}
+.UserProfile_form_container2 h1 {
+  margin-left: 2vw;
+  /* margin-top: 4vh; */
+  margin-bottom: 4vh;
+  /* position: absolute; */
+}
+.UserProfile_form_container2 p {
+  font-size: medium;
+  margin-left: 2vw;
+  margin-right: 2rem !important;
+  margin-bottom: 4vh;
+  text-align: left;
+}
+
 @media (min-width: 991px) {
   section {
     padding: 2rem 9%;

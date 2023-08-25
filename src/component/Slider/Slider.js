@@ -76,7 +76,7 @@ const Note = styled.div`
 
 const Marquee = styled.div`
   display: flex;
-  width: 900px;
+  width: 70vw;
   overflow: hidden;
   user-select: none;
 
