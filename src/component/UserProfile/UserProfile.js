@@ -91,7 +91,7 @@ const UserProfile = () => {
                   {isLoading ? "Loading…" : "Genrate Resume"}
                 </Button>
                 <Button size="lg" variant="outline-primary">
-                  Contact Info
+                  Contact Info.
                 </Button>
               </div>
             </div>
