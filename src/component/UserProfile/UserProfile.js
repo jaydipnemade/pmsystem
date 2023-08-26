@@ -7,6 +7,7 @@ import Image from "react-bootstrap/Image";
 import Row from "react-bootstrap/Row";
 import Button from "react-bootstrap/Button";
 
+
 // import CarService from "../../services/CarService";
 // import UserService from "../../services/UserService";
 // import BookingService from "../../services/BookingService";
@@ -217,17 +218,20 @@ const UserProfile = () => {
                   </Link>
                 </div>
                 <h1> Contact Info</h1>
-
-                <p>
-                  1 Month
-                  <br />
-                  The Personnel Management System (PMS) is a comprehensive
-                  software solution designed to streamline and automate various
-                  human resource management tasks within an organization. This
-                  system aims to improve the efficiency, accuracy, and
-                  accessibility of managing personnel-related information and
-                  processes.
-                </p>
+                <div
+                  className="row"
+                  style={{ marginLeft: "1vw", marginRight: "15%" }}
+                >
+                  <div className="col ">
+                    <ul>
+                      <li>Phone No:-</li>
+                      <li>Email Id:-</li>
+                      <li>
+                        Permanent address:- <p>{/* address mapping here*/}</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

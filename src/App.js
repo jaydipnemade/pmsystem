@@ -12,6 +12,9 @@ import MeetOurTeam from "./component/AboutUs/MeetOurTeam";
 import NotFound from "./component/NotFound/NotFound";
 import RecruiterLogin from "./component/RecruiterLogin/RecruiterLogin";
 import UserProfile from "./component/UserProfile/UserProfile";
+import RecruiterInfo from "./component/RecruiterInfo/RecruiterInfo";
+import CreateJob from "./component/CreateJob/CreateJob";
+import AdminProfile from "./component/AdminProfile/AdminProfile";
 
 function App() {
   return (
@@ -27,6 +30,9 @@ function App() {
         <Route path="/MeetOurTeam" element={<MeetOurTeam />} />
         <Route path="/RecruiterLogin" element={<RecruiterLogin />} />
         <Route path="/UserProfile" element={<UserProfile />} />
+        <Route path="/RecruiterInfo" element={<RecruiterInfo />} />
+        <Route path="/CreateJob" element={<CreateJob />} />
+        <Route path="/AdminProfile" element={<AdminProfile />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

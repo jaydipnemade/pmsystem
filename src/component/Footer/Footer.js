@@ -4,6 +4,7 @@ import insta from "./instagram.png";
 import twitter from "./twitter.png";
 import linkedin from "./linkedin.png";
 import Slider from "../Slider/Slider";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -35,6 +36,16 @@ const Footer = () => {
               <li>Career</li>
               <li>Employee home</li>
               <li>Sitemap</li>
+              <li>
+                {" "}
+                <Link
+                  to={"/UserProfile"}
+                  className="nav-link active"
+                  style={{ backgroundColor: "transparent" }}
+                >
+                  UserProfile
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -44,6 +55,16 @@ const Footer = () => {
               <li>Summons/Notices</li>
               <li>Grievances</li>
               <li>Report issue</li>
+              <li>
+                {" "}
+                <Link
+                  to={"/CreateJob"}
+                  className="nav-link active"
+                  style={{ backgroundColor: "transparent" }}
+                >
+                 CreateJob
+                </Link>
+              </li>
             </ul>
           </div>
 

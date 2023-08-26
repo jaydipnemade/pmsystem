@@ -13,6 +13,12 @@ function Navbar() {
     const mockResults = ["Result 1", "Result 2", "Result 3"];
     setSearchResults(mockResults.filter((result) => result.includes(query)));
   };
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const handleProfileClick = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
   function menuOnclick() {
     let menu = document.querySelector("#menu-btn1");
     let navbar = document.querySelector(".navbar");
@@ -123,7 +129,7 @@ function Navbar() {
             </Link>
           )} */}
         </nav>
-        <div id="login-btn1">
+        {/* <div id="login-btn1">
           {localStorage.getItem("token") ? (
             <button type="button" className="btn1" onClick={handleLogout}>
               Logout
@@ -134,10 +140,37 @@ function Navbar() {
               className="nav-link active"
               style={{ backgroundColor: "transparent" }}
             >
+              <button className="btn1">Login</button>
+              <i className="far fa-user"></i>
+            </Link>
+          )}
+        </div> */}
+        {/* new code */}
+        <div className="Navcontainer" id="login-btn1">
+          {isLoggedIn ? (
+            <div className="Navprofile-circle" onClick={handleProfileClick}>
+              <img src={""} alt="User Avatar" />
+            </div>
+          ) : (
+            <Link
+              to={"/UserLogin"}
+              className="nav-link active"
+              style={{ backgroundColor: "transparent" }}
+            >
               {/* <button onClick={loginonclick} className="btn1"> */}
               <button className="btn1">Login</button>
               <i className="far fa-user"></i>
             </Link>
+          )}
+          {isDropdownOpen && (
+            <div className="Navdropdown">
+              <div className="Navdropdown-item" onClick={handleProfileClick}>
+                View Profile
+              </div>
+              <div className="Navdropdown-item" onClick={handleLogout}>
+                Logout
+              </div>
+            </div>
           )}
         </div>
       </header>
