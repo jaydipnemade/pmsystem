@@ -4,13 +4,15 @@ import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 
 import Button from "react-bootstrap/Button";
+import Offcanvas from "react-bootstrap/Offcanvas";
+import axios from "axios";
 
 // import CarService from "../../services/CarService";
-// import UserService from "../../services/UserService";
+// import RecService from "../../services/RecService";
 // import BookingService from "../../services/BookingService";
-import "./UserProfile.css";
+import "./RecProfile.css";
 
-const UserProfile = () => {
+const RecProfile = () => {
   useEffect(() => {
     const handleScroll = (event) => {
       if (window.scrollY > 0) {
@@ -32,13 +34,16 @@ const UserProfile = () => {
   }, []);
   const [isLoading, setLoading] = useState(false);
   const [shouldNavigate, setShouldNavigate] = useState(false);
+  //
+  //
+  //
 
   useEffect(() => {
     const navigateTimeout = setTimeout(() => {
       if (shouldNavigate) {
         // Navigate to another component
         // You can replace '/another-component' with the desired path
-        window.location.href = "/UserLogin";
+        window.location.href = "/CreateJob";
       }
     }, 2000);
 
@@ -46,11 +51,34 @@ const UserProfile = () => {
       clearTimeout(navigateTimeout);
     };
   }, [shouldNavigate]);
-
+  //
+  //
+  //
   const handleClick = () => {
     setLoading(true);
     setShouldNavigate(true);
   };
+  //
+  //
+  //
+
+  const handleClose = () => setShow(false);
+
+  const [show, setShow] = useState(false);
+  const [jobTitles, setJobTitles] = useState([]);
+
+  const handleShow = async () => {
+    try {
+      const response = await axios.get("/api/recruiter/jobtitles"); // Replace with your API endpoint
+      setJobTitles(response.data);
+      setShow(true);
+    } catch (error) {
+      console.error("Error fetching job titles:", error);
+    }
+  };
+  //
+  //
+  //
   const MoveToContactInfo = () => {
     // Find the element with the id "contactSection"
     const section = document.getElementById("contactSection");
@@ -58,14 +86,17 @@ const UserProfile = () => {
     // Scroll to the section
     section.scrollIntoView({ behavior: "smooth" });
   };
+  //
+  //
+  //
 
   return (
     <>
-      <section className="UserProfile">
+      <section className="RecProfile">
         <Container>
-          <div className="UserProfile_container">
-            <div className="UserProfile_form_container">
-              <div className="UserProfile_form_container_inner profHead">
+          <div className="RecProfile_container">
+            <div className="RecProfile_form_container">
+              <div className="RecProfile_form_container_inner profHead">
                 {/* <div className="profHead"></div> */}
                 <div className="profilePictureContainer">
                   <img
@@ -76,15 +107,15 @@ const UserProfile = () => {
                 </div>
               </div>
               <div>
-                <Link to="/BioData" className="rounded-button">
+                <Link to="/RecruiterInfo" className="rounded-button">
                   <i
                     className="fa-solid fa-pencil fa-2xl"
                     style={{ color: "#130f40" }}
                   ></i>
                 </Link>
               </div>
-              <div className="UserProfileInfoContainer">
-                {/* user name */}
+              <div className="RecProfileInfoContainer">
+                {/* Rec name */}
                 <h1> Jaydip Nemade.</h1>
                 {/* head tag that is education */}
                 <p>
@@ -93,7 +124,7 @@ const UserProfile = () => {
                 </p>
                 <hr />
                 <Button size="lg" disabled={isLoading} onClick={handleClick}>
-                  {isLoading ? "Loading…" : "Genrate Resume"}
+                  {isLoading ? "Loading…" : "Create Job"}
                 </Button>
                 <Button
                   size="lg"
@@ -102,19 +133,39 @@ const UserProfile = () => {
                 >
                   Contact Info.
                 </Button>
-                <Link to="/BioData">
-                  <Button size="lg" className="blue-border-button">
-                    Jobs Applied
+                <Link>
+                  <Button
+                    size="lg"
+                    className="blue-border-button"
+                    onClick={handleShow}
+                  >
+                    Jobs Created
                   </Button>
                 </Link>
+                <Offcanvas show={show} onHide={handleClose}>
+                  <Offcanvas.Header closeButton>
+                    <Offcanvas.Title>Jobs Created by you</Offcanvas.Title>
+                  </Offcanvas.Header>
+                  <Offcanvas.Body>
+                    {jobTitles.length === 0 ? (
+                      <p>No jobs created yet.</p>
+                    ) : (
+                      <ol>
+                        {jobTitles.map((title, index) => (
+                          <li key={index}>{title}</li>
+                        ))}
+                      </ol>
+                    )}
+                  </Offcanvas.Body>
+                </Offcanvas>
               </div>
             </div>
           </div>
-          <div className="UserProfile_container">
-            <div className="UserProfile_form_container2">
+          <div className="RecProfile_container">
+            <div className="RecProfile_form_container2">
               <div>
                 <div className="internal_rounded-button">
-                  <Link to="/BioData">
+                  <Link to="/RecruiterInfo">
                     <i
                       className="fa-solid fa-pencil fa-2xl"
                       style={{ color: "#130f40" }}
@@ -134,18 +185,18 @@ const UserProfile = () => {
               </div>
             </div>
           </div>
-          <div className="UserProfile_container">
-            <div className="UserProfile_form_container2">
+          <div className="RecProfile_container">
+            <div className="RecProfile_form_container2">
               <div>
                 <div className="internal_rounded-button">
-                  <Link to="/BioData">
+                  <Link to="/RecruiterInfo">
                     <i
                       className="fa-solid fa-pencil fa-2xl"
                       style={{ color: "#130f40" }}
                     ></i>
                   </Link>
                 </div>
-                <h1> Skills</h1>
+                <h1>Technologies</h1>
 
                 <p>
                   Skills: C# · ASP.NET · Node.js · Express.js · REST APIs ·
@@ -154,60 +205,12 @@ const UserProfile = () => {
               </div>
             </div>
           </div>
-          <div className="UserProfile_container">
-            <div className="UserProfile_form_container2">
-              <div>
-                <div className="internal_rounded-button">
-                  <Link to="/BioData">
-                    <i
-                      className="fa-solid fa-pencil fa-2xl"
-                      style={{ color: "#130f40" }}
-                    ></i>
-                  </Link>
-                </div>
-                <h1> Experience</h1>
 
-                <p>
-                  2 Years
-                  <br /> Live Sound EngineerLive Sound Engineer Octave pro snl ·
-                  FreelanceOctave pro snl · Freelance May 2017 - Dec 2019 · 2
-                  yrs 8 mos May 2017 - Dec 2019 · 2 yrs 8 mos Pune, Maharashtra,
-                  India.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="UserProfile_container">
-            <div className="UserProfile_form_container2">
+          <div className="RecProfile_container" id="contactSection">
+            <div className="RecProfile_form_container2">
               <div>
                 <div className="internal_rounded-button">
-                  <Link to="/BioData">
-                    <i
-                      className="fa-solid fa-pencil fa-2xl"
-                      style={{ color: "#130f40" }}
-                    ></i>
-                  </Link>
-                </div>
-                <h1> Project</h1>
-
-                <p>
-                  1 Month
-                  <br />
-                  The Personnel Management System (PMS) is a comprehensive
-                  software solution designed to streamline and automate various
-                  human resource management tasks within an organization. This
-                  system aims to improve the efficiency, accuracy, and
-                  accessibility of managing personnel-related information and
-                  processes.
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="UserProfile_container" id="contactSection">
-            <div className="UserProfile_form_container2">
-              <div>
-                <div className="internal_rounded-button">
-                  <Link to="/BioData">
+                  <Link to="/RecruiterInfo">
                     <i
                       className="fa-solid fa-pencil fa-2xl"
                       style={{ color: "#130f40" }}
@@ -237,4 +240,4 @@ const UserProfile = () => {
     </>
   );
 };
-export default UserProfile;
+export default RecProfile;

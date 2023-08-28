@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap");
+
+:root {
+  --blue: #0a42df;
+  --light-blue: #275df5;
+  --black: #130f40;
+  --light-colour: #666666;
+  --border: 0.1rem solid rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0%;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: capitalize;
+  transition: all 0.2s linear;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+  scroll-behavior: smooth;
+}
+
+section {
+  padding: 2rem 9%;
+}
+.RecProfile {
+  margin-top: 15rem;
+}
+.RecProfile_container {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(241, 244, 255);
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  border-radius: 10px;
+}
+.RecProfile_form_container {
+  width: 75vw !important;
+  height: 70vh;
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 5px 7px 7px -2px rgb(0 0 0 / 50%),
+    0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+  /* margin-top: 10%; */
+  margin-bottom: 2rem;
+  /* margin-top: 15rem; */
+  background-color: white;
+}
+.RecProfile_form_container_inner {
+  width: 75vw !important;
+  height: 70vh;
+  display: flex;
+  /* border-radius: 10px; */
+  box-shadow: 0px 4px 4px -1px rgb(0 0 0 / 30%),
+    0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+  /* margin-top: 10%; */
+  margin-bottom: 2rem;
+  /* margin-top: 15rem; */
+  background-color: white;
+}
+.profHead {
+  width: 100vw;
+  height: 25vh;
+  display: flex;
+  background-image: url("./Rprof1.jpg");
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: absolute;
+  /* z-index: -1; */
+}
+.profilePictureContainer {
+  width: 25vh;
+  height: 25vh;
+  border-radius: 50%;
+  object-fit: cover; /* Preserve aspect ratio */
+  position: relative !important;
+  z-index: 1;
+  margin-top: 10vh;
+  margin-left: 10vh;
+  background-color: rgb(255, 255, 255);
+  padding: 5px;
+}
+.profilePictureContainer img {
+  object-fit: cover;
+  z-index: 2;
+  border-radius: 50%;
+  size-adjust: fit;
+  aspect-ratio: 1;
+}
+.rounded-button {
+  /* display: flex;
+    justify-content: right; */
+  position: absolute;
+  z-index: 1;
+  text-decoration: none;
+  margin-top: 33vh;
+  margin-left: 70vw;
+}
+.internal_rounded-button{
+    position: relative;
+     margin-top: 5vh !important;
+  margin-left: 70vw;
+}
+.RecProfileInfoContainer {
+  z-index: 1;
+  margin-top: 37vh;
+  margin-left: 2vw;
+}
+.RecProfileInfoContainer h1 {
+  font-weight: bolder;
+}
+.RecProfileInfoContainer p {
+  font-size: medium;
+}
+.RecProfileInfoContainer Button {
+  border-radius: 20px;
+  background-color: var(--light-blue);
+  color: #ffffff;
+  margin-right: 10px;
+}
+.RecProfileInfoContainer .blue-border-button {
+  border-color: blue;
+  background-color: aliceblue;
+  color: #130f40;
+}
+.RecProfile_form_container2 {
+  width: 75vw !important;
+  height: 100%;
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 5px 7px 7px -2px rgb(0 0 0 / 50%),
+    0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+  /* margin-top: 10%; */
+  margin-bottom: 2rem;
+  /* margin-top: 15rem; */
+  background-color: white;
+}
+.RecProfile_form_container2 h1 {
+  margin-left: 2vw;
+  /* margin-top: 4vh; */
+  margin-bottom: 4vh;
+  /* position: absolute; */
+}
+.RecProfile_form_container2 p {
+  font-size: medium;
+  margin-left: 2vw;
+  margin-right: 2rem !important;
+  margin-bottom: 4vh;
+  text-align: left;
+}
+.col li{
+    font-size: medium;
+    
+}
+
+@media (min-width: 991px) {
+  section {
+    padding: 2rem 9%;
+  }
+  /* .profHead {
+    width: 71.2vw;
+    height: 25vh;
+    display: flex;
+    background-image: url("./Uprof1.jpg");
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    position: absolute;
+
+  } */
+}
+@media (min-width: 768px) {
+  section {
+    padding: 2rem 9%;
+  }
+}

@@ -1,6 +1,5 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./component/Navbar/Navbar";
 import Home from "./component/Home/Home";
 import ResumeBuilder from "./component/ResumeBuilder/ResumeBuilder";
@@ -15,6 +14,9 @@ import UserProfile from "./component/UserProfile/UserProfile";
 import RecruiterInfo from "./component/RecruiterInfo/RecruiterInfo";
 import CreateJob from "./component/CreateJob/CreateJob";
 import AdminProfile from "./component/AdminProfile/AdminProfile";
+import FeedbackForm from "./component/Feedback/FeedbackForm";
+import RecProfile from "./component/RecruiterProfile/RecProfile";
+import BioData from "./component/BioData/BioData";
 
 function App() {
   return (
@@ -30,9 +32,12 @@ function App() {
         <Route path="/MeetOurTeam" element={<MeetOurTeam />} />
         <Route path="/RecruiterLogin" element={<RecruiterLogin />} />
         <Route path="/UserProfile" element={<UserProfile />} />
+        <Route path="/AdminProfile" element={<AdminProfile />} />
         <Route path="/RecruiterInfo" element={<RecruiterInfo />} />
         <Route path="/CreateJob" element={<CreateJob />} />
-        <Route path="/AdminProfile" element={<AdminProfile />} />
+        <Route path="/FeedbackForm" element={<FeedbackForm />} />
+        <Route path="/RecProfile" element={<RecProfile />} />
+        <Route path="/BioData" element={<BioData />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
