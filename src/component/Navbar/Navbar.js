@@ -79,7 +79,7 @@ function Navbar() {
             Home
           </Link>
           <Link
-            to={"/Jobs"}
+            to={"/JobInformation"}
             className="nav-link active"
             style={{ backgroundColor: "transparent" }}
           >
