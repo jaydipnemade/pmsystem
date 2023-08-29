@@ -5,6 +5,7 @@ import "./BioData.css";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom"; // Import Link
 
 function BioData() {
   const [user, setUser] = useState({
@@ -535,7 +536,7 @@ function BioData() {
               </Form.Group>
 
               {/* Personal Info Input */}
-              <h2> Personal Info </h2>
+              {/* <h2> Personal Info </h2>
               <Form.Group className="mb-3" controlId="formGroupDateOfBirth">
                 <Form.Label>Date of Birth</Form.Label>
                 <Form.Control
@@ -549,7 +550,7 @@ function BioData() {
                 {personalInfoValidationErrors.dob && (
                   <p className="error">{personalInfoValidationErrors.dob}</p>
                 )}
-              </Form.Group>
+              </Form.Group> */}
               {/* <Form.Group className="mb-3" controlId="formGroupGender">
                 <Form.Label>Gender</Form.Label>
                 <Form.Control
@@ -640,7 +641,7 @@ function BioData() {
                   </p>
                 )}
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formGroupTechnicalSkills">
+              {/* <Form.Group className="mb-3" controlId="formGroupTechnicalSkills">
                 <Form.Label>Technical Skills</Form.Label>
                 <Form.Control
                   type="text"
@@ -658,10 +659,10 @@ function BioData() {
                     {personalInfoValidationErrors.technical}
                   </p>
                 )}
-              </Form.Group>
+              </Form.Group> */}
 
               {/* Qualification Input */}
-              <h2> Qualification Input </h2>
+              {/* <h2> Qualification Input </h2>
               <Form.Group className="mb-3" controlId="formGroupInstitutionName">
                 <Form.Label>Institution Name</Form.Label>
                 <Form.Control
@@ -680,7 +681,7 @@ function BioData() {
                     {qualificationValidationErrors.institutionName}
                   </p>
                 )}
-              </Form.Group>
+              </Form.Group> */}
               {/* <Form.Group className="mb-3" controlId="formGroupDegree">
                 <Form.Label>Degree</Form.Label>
                 <Form.Control
@@ -769,7 +770,7 @@ function BioData() {
               </Form.Group> */}
 
               {/* Project Input */}
-              <h2> Project Info </h2>
+              {/* <h2> Project Info </h2>
               <Form.Group className="mb-3" controlId="formGroupProjectName">
                 <Form.Label>Project Name & Info</Form.Label>
                 <Form.Control
@@ -783,7 +784,7 @@ function BioData() {
                 {projectValidationErrors.projectName && (
                   <p className="error">{projectValidationErrors.projectName}</p>
                 )}
-              </Form.Group>
+              </Form.Group> */}
               {/* <Form.Group
                 className="mb-3"
                 controlId="formGroupProjectDescription"
@@ -809,7 +810,7 @@ function BioData() {
               </Form.Group> */}
 
               {/* Work Experience Input */}
-              <h2> Work Experience </h2>
+              {/* <h2> Work Experience </h2>
               <Form.Group className="mb-3" controlId="formGroupdesignation">
                 <Form.Label>Enter WorkExperinence and details</Form.Label>
                 <Form.Control
@@ -828,7 +829,7 @@ function BioData() {
                     {workExperienceValidationErrors.designation}
                   </p>
                 )}
-              </Form.Group>
+              </Form.Group> */}
               {/* <Form.Group className="mb-3" controlId="formGroupOrganization">
                 <Form.Label>Organization</Form.Label>
                 <Form.Control
@@ -919,6 +920,7 @@ function BioData() {
               >
                 Submit Resume
               </Button>
+              <Link to="/WorkExperience">Next</Link>
             </Form>
           </div>
         </div>

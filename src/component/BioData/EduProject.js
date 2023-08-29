@@ -72,6 +72,7 @@ function EduProject() {
         <div className="MainJobContainer ">
           <div className="JobContainer  mt-4">
             <Form>
+              <div className="headUserImageContainer"></div>
               <h2> Project Info </h2>
 
               <Form.Group className="mb-3" controlId="formGroupProjectName">
@@ -111,11 +112,18 @@ function EduProject() {
                   </p>
                 )}
               </Form.Group>
-              <Button type="submit" variant="primary" onClick={handleSubmit}>
+              <Button
+                type="submit"
+                variant="primary"
+                onClick={handleSubmit}
+                className="ButtoN  btn btn-primary btn-lg mb-5 ms-auto me-auto  rounded-pill "
+              >
                 Submit
               </Button>
               {/* Button to navigate to next step */}
-              <Link to="/workExperience">Next</Link>
+                          <Link to="/WorkExperience">Prev</Link>
+                          -
+              <Link to="/Qualification">Next</Link>
             </Form>
           </div>
         </div>

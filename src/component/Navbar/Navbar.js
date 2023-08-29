@@ -1,7 +1,8 @@
 import React from "react";
 import "./navbar.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios"; // Import axios for making API requests
 
 function Navbar() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -30,6 +31,21 @@ function Navbar() {
   // }
   const isLoggedIn = localStorage.getItem("logstatus");
   const userRole = localStorage.getItem("userRole");
+  const [avatarBlob, setAvatarBlob] = useState(null); // State to store avatar Blob
+   useEffect(() => {
+     // Assuming user ID is stored in local storage
+     const userId = localStorage.getItem("id");
+
+     // Fetch the avatar Blob data based on the user ID
+     axios
+       .get(`/api/user/${userId}/avatar`, { responseType: "blob" }) // Update the API endpoint
+       .then((response) => {
+         setAvatarBlob(response.data);
+       })
+       .catch((error) => {
+         console.error("Error fetching avatar:", error);
+       });
+   }, []);
 
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -114,36 +130,35 @@ function Navbar() {
               <i className="fa-solid fa-bell fa-shake fa-2xl"></i>
             </Link>
           )}
-
-          {/* new code */}
-          <div className="Navcontainer" id="login-btn1">
-            {isLoggedIn ? (
-              <div className="Navprofile-circle" onClick={handleProfileClick}>
-                <img src={""} alt="User Avatar" />
-              </div>
-            ) : (
-              <Link
-                to={"/UserLogin"}
-                className="nav-link active"
-                style={{ backgroundColor: "transparent" }}
-              >
-                {/* <button onClick={loginonclick} className="btn1"> */}
-                <button className="btn1">Login</button>
-                <i className="far fa-user"></i>
-              </Link>
-            )}
-            {isDropdownOpen && (
-              <div className="Navdropdown">
-                <div className="Navdropdown-item" onClick={handleProfileClick}>
-                  View Profile
-                </div>
-                <div className="Navdropdown-item" onClick={handleLogout}>
-                  Logout
-                </div>
-              </div>
-            )}
-          </div>
         </nav>
+        {/* new code */}
+        <div className="Navcontainer" id="login-btn1">
+          {isLoggedIn ? (
+            <div className="Navprofile-circle" onClick={handleProfileClick}>
+              <img src={""} alt="User Avatar" />
+            </div>
+          ) : (
+            <Link
+              to={"/UserLogin"}
+              className="nav-link active"
+              style={{ backgroundColor: "transparent" }}
+            >
+              {/* <button onClick={loginonclick} className="btn1"> */}
+              <button className="btn1">Login</button>
+              <i className="far fa-user"></i>
+            </Link>
+          )}
+          {isDropdownOpen && (
+            <div className="Navdropdown">
+              <div className="Navdropdown-item" onClick={handleProfileClick}>
+                View Profile
+              </div>
+              <div className="Navdropdown-item" onClick={handleLogout}>
+                Logout
+              </div>
+            </div>
+          )}
+        </div>
       </header>
     </>
   );

@@ -112,6 +112,7 @@ function Qualification() {
         <div className="MainJobContainer ">
           <div className="JobContainer  mt-4">
             <Form>
+              <div className="headUserImageContainer"></div>
               <h2> Qualification Input </h2>
               <Form.Group className="mb-3" controlId="formGroupInstitutionName">
                 <Form.Label>Institution Name</Form.Label>
@@ -223,11 +224,17 @@ function Qualification() {
                   </p>
                 )}
               </Form.Group>
-              <Button type="submit" variant="primary" onClick={handleSubmit}>
+              <Button
+                type="submit"
+                variant="primary"
+                onClick={handleSubmit}
+                className="ButtoN  btn btn-primary btn-lg mb-5 ms-auto me-auto  rounded-pill "
+              >
                 Submit
               </Button>
               {/* Button to navigate to next step */}
-              <Link to="/project">Next</Link>
+              <Link to="/EduProject">Prev</Link>-
+              <Link to="/PersonalInfo">Next</Link>
             </Form>
           </div>
         </div>

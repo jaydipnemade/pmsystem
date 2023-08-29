@@ -121,6 +121,7 @@ function PersonalInfo() {
         <div className="MainJobContainer ">
           <div className="JobContainer  mt-4">
             <Form>
+              <div className="headUserImageContainer"></div>
               <h2> Personal Info </h2>
               <Form.Group className="mb-3" controlId="formGroupDateOfBirth">
                 <Form.Label>Date of Birth</Form.Label>
@@ -246,11 +247,11 @@ function PersonalInfo() {
                 )}
               </Form.Group>
 
-              <Button type="submit" variant="primary" onClick={handleSubmit}>
+              <Button type="submit" variant="primary" onClick={handleSubmit} className="ButtoN  btn btn-primary btn-lg mb-5 ms-auto me-auto  rounded-pill ">
                 Submit
               </Button>
               {/* Button to navigate to next step */}
-              <Link to="/qualification">Next</Link>
+              <Link to="/qualification">prev</Link>
             </Form>
           </div>
         </div>
