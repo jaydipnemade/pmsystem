@@ -18,6 +18,10 @@ import FeedbackForm from "./component/Feedback/FeedbackForm";
 import RecProfile from "./component/RecruiterProfile/RecProfile";
 import BioData from "./component/BioData/BioData";
 import JobInformation from "./component/JobInformation/JobInformation";
+import EduProject from "./component/BioData/EduProject";
+import PersonalInfo from "./component/BioData/PersonalInfo";
+import Qualification from "./component/BioData/Qualification";
+import WorkExperience from "./component/BioData/WorkExperience";
 
 function App() {
   return (
@@ -40,7 +44,10 @@ function App() {
         <Route path="/RecProfile" element={<RecProfile />} />
         <Route path="/BioData" element={<BioData />} />
         <Route path="/JobInformation" element={<JobInformation />} />
-
+        <Route path="/EduProject" element={<EduProject />} />
+        <Route path="/PersonalInfo" element={<PersonalInfo />} />
+        <Route path="/Qualification" element={<Qualification />} />
+        <Route path="/WorkExperience" element={<WorkExperience />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />

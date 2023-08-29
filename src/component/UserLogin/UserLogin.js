@@ -8,7 +8,7 @@ import axios from "axios";
 import "./Userlogin.css";
 import React, { Component } from "react";
 const api = axios.create({
-  baseURL: "http://localhost:8080/api/v1/",
+  baseURL: "http://localhost:9090/",
 });
 
 const UserLogin = () => {
@@ -21,7 +21,7 @@ const UserLogin = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("logstatus");
     if (token) {
       // User already logged in, redirect to home page
       navigate("/");
@@ -51,10 +51,18 @@ const UserLogin = () => {
     try {
       const response = await api.post("/login", data);
 
-      if (response.data) {
-        const token = response.data.token;
-        localStorage.setItem("token", token);
-        navigate("/Home");
+      if (response.status === 200) {
+        // const token = response.data.token;
+        localStorage.setItem("name", response.data.name);
+        localStorage.setItem("id", response.data.id);
+        localStorage.setItem("email", response.data.email);
+
+        localStorage.setItem("role", response.data.role);
+        localStorage.setItem("logstatus", true);
+
+        if (response.data.role === "candidate") navigate("/UserProfile");
+        else if (response.data.role === "recruiter") navigate("/RecProfile");
+        else navigate("/UserLogin");
       } else {
         setError("Invalid username or password");
       }

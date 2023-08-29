@@ -28,13 +28,19 @@ function Navbar() {
   // function loginonclick() {
   //   document.querySelector(".login-form-container").classList.toggle("active");
   // }
-  const isLoggedIn = !!localStorage.getItem("token");
+  const isLoggedIn = localStorage.getItem("logstatus");
   const userRole = localStorage.getItem("userRole");
 
   const navigate = useNavigate();
   const handleLogout = () => {
-    localStorage.removeItem("token");
-    navigate("/UserLogin");
+    localStorage.removeItem("name");
+    localStorage.removeItem("email");
+    localStorage.removeItem("id");
+    localStorage.removeItem("role");
+    localStorage.removeItem("logstatus");
+    setIsDropdownOpen(!isDropdownOpen);
+
+    navigate("/");
   };
   return (
     <>
@@ -93,6 +99,7 @@ function Navbar() {
             <button className="dropdown-btn"> | For Employers</button>
             <div className="dropdown-content">
               <Link to={"/CreateJob"}>Post a Job</Link>
+
               <Link to={"/UserLogin"}>Login</Link>
               {/* Add more dropdown items as needed */}
             </div>
@@ -107,72 +114,36 @@ function Navbar() {
               <i className="fa-solid fa-bell fa-shake fa-2xl"></i>
             </Link>
           )}
-          {/* Conditionally render the UserDashboard link */}
-          {/* {isLoggedIn && userRole === "USER" && (
-            <Link
-              to={"/UserDashboard"}
-              className="nav-link active"
-              style={{ backgroundColor: "transparent" }}
-            >
-              <i className="fa-solid fa-bell fa-shake fa-2xl"></i>
-            </Link>
-          )} */}
 
-          {/* Conditionally render the AdminDashboard link */}
-          {/* {isLoggedIn && userRole === "ADMIN" && (
-            <Link
-              to={"/AdminDashboard"}
-              className="nav-link active"
-              style={{ backgroundColor: "transparent" }}
-            >
-              <i className="fa-solid fa-bell fa-shake fa-2xl"></i>
-            </Link>
-          )} */}
+          {/* new code */}
+          <div className="Navcontainer" id="login-btn1">
+            {isLoggedIn ? (
+              <div className="Navprofile-circle" onClick={handleProfileClick}>
+                <img src={""} alt="User Avatar" />
+              </div>
+            ) : (
+              <Link
+                to={"/UserLogin"}
+                className="nav-link active"
+                style={{ backgroundColor: "transparent" }}
+              >
+                {/* <button onClick={loginonclick} className="btn1"> */}
+                <button className="btn1">Login</button>
+                <i className="far fa-user"></i>
+              </Link>
+            )}
+            {isDropdownOpen && (
+              <div className="Navdropdown">
+                <div className="Navdropdown-item" onClick={handleProfileClick}>
+                  View Profile
+                </div>
+                <div className="Navdropdown-item" onClick={handleLogout}>
+                  Logout
+                </div>
+              </div>
+            )}
+          </div>
         </nav>
-        {/* <div id="login-btn1">
-          {localStorage.getItem("token") ? (
-            <button type="button" className="btn1" onClick={handleLogout}>
-              Logout
-            </button>
-          ) : (
-            <Link
-              to={"/UserLogin"}
-              className="nav-link active"
-              style={{ backgroundColor: "transparent" }}
-            >
-              <button className="btn1">Login</button>
-              <i className="far fa-user"></i>
-            </Link>
-          )}
-        </div> */}
-        {/* new code */}
-        <div className="Navcontainer" id="login-btn1">
-          {isLoggedIn ? (
-            <div className="Navprofile-circle" onClick={handleProfileClick}>
-              <img src={""} alt="User Avatar" />
-            </div>
-          ) : (
-            <Link
-              to={"/UserLogin"}
-              className="nav-link active"
-              style={{ backgroundColor: "transparent" }}
-            >
-              {/* <button onClick={loginonclick} className="btn1"> */}
-              <button className="btn1">Login</button>
-              <i className="far fa-user"></i>
-            </Link>
-          )}
-          {isDropdownOpen && (
-            <div className="Navdropdown">
-              <div className="Navdropdown-item" onClick={handleProfileClick}>
-                View Profile
-              </div>
-              <div className="Navdropdown-item" onClick={handleLogout}>
-                Logout
-              </div>
-            </div>
-          )}
-        </div>
       </header>
     </>
   );

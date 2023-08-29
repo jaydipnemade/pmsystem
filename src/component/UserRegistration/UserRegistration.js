@@ -65,16 +65,17 @@ const UserRegistration = () => {
     }
 
     try {
-      const url = "http://localhost:8080/api/v1/signup";
+      const url = "http://localhost:9090/register";
       const response = await fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          username: data.UserName,
+          name: data.UserName,
           email: data.email,
           password: data.password,
+          role: selectedValue,
         }),
       });
 
@@ -83,7 +84,8 @@ const UserRegistration = () => {
         throw new Error(errorData.message || "An error occurred.");
       }
 
-      navigate("/login");
+      window.alert("Registration Successful You Can Login Now !");
+      navigate("/UserLogin");
     } catch (error) {
       setError(error.message || "An error occurred. Please try again later.");
       setTimeout(() => {
@@ -190,7 +192,7 @@ const UserRegistration = () => {
                   <input
                     type="text"
                     name="UserName"
-                    placeholder="User Name"
+                    placeholder="Username"
                     onChange={handleChange}
                     value={data.UserName}
                     required
@@ -211,11 +213,11 @@ const UserRegistration = () => {
                     required
                     className="uinput"
                   /> */}
-                
-                    <label htmlFor="YouAreA">
-                      <h2>I am a :-</h2>
-                    </label>
-                  
+
+                  <label htmlFor="YouAreA">
+                    <h2>I am a :-</h2>
+                  </label>
+
                   <input
                     type="password"
                     placeholder="Password"
@@ -237,15 +239,17 @@ const UserRegistration = () => {
                     required
                     className="uinput"
                   />
-                  
-                  
-                    <select className="selectControl" value={selectedValue} onChange={handleSelectChange}>
-                      <option value="">Select</option>
-                      <option value="0">Chandidate</option>
-                      <option value="1">Recruter</option>
-                    </select>
-                    
-                
+
+                  <select
+                    className="selectControl"
+                    value={selectedValue}
+                    onChange={handleSelectChange}
+                  >
+                    <option value="">Select</option>
+                    <option value="candidate">Candidate</option>
+                    <option value="recruiter">Recruiter</option>
+                  </select>
+
                   <input
                     type="password"
                     placeholder="Confirm Password"
