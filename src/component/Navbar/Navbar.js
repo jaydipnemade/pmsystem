@@ -121,7 +121,7 @@ function Navbar() {
             </div>
           </div>
 
-          {isLoggedIn && (
+          {/* {isLoggedIn && (
             <Link
               to={"/Home"}
               className="nav-link active"
@@ -129,7 +129,7 @@ function Navbar() {
             >
               <i className="fa-solid fa-bell fa-shake fa-2xl"></i>
             </Link>
-          )}
+          )} */}
         </nav>
         {/* new code */}
         <div className="Navcontainer" id="login-btn1">
