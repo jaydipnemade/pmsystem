@@ -384,7 +384,59 @@ function BioData() {
         { headers: { "Content-Type": "multipart/form-data" } }
       );
       console.log(response.data); // Assuming the backend sends a success message
+      window.alert("Bio Data submitted ");
       // Reset form fields or show a success message
+      // Reset form fields
+      setUser({
+        name: "",
+        email: "",
+        mobile: "",
+      });
+
+      setProject({
+        projectName: "",
+      });
+
+      setWorkExperience({
+        designation: "",
+      });
+
+      setPersonalInfo({
+        dob: "",
+        languageKnown: "",
+        hobbies: "",
+        address: "",
+        technical: "",
+      });
+
+      setQualification({
+        institutionName: "",
+      });
+
+      // Reset validation error states
+      setUserValidationErrors({
+        name: "",
+        email: "",
+        mobile: "",
+      });
+
+      setProjectValidationErrors({
+        projectName: "",
+      });
+
+      setWorkExperienceValidationErrors({
+        designation: "",
+      });
+
+      setPersonalInfoValidationErrors({
+        dob: "",
+        address: "",
+        technical: "",
+      });
+
+      setQualificationValidationErrors({
+        institutionName: "",
+      });
     } catch (error) {
       console.error("Error submitting resume:", error);
       // Handle error (show error message, etc.)

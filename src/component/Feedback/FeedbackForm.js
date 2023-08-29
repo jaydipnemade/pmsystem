@@ -1,161 +1,166 @@
-// import React, { useState } from "react";
-// import Card from "react-bootstrap/Card";
-// import Container from "react-bootstrap/Container";
-// import Form from "react-bootstrap/Form";
-// import { InputGroup, Row } from "react-bootstrap";
-// import Button from "react-bootstrap/Button";
-// import { Col } from "react-bootstrap";
-// import "react-phone-number-input/FeedbackForm.css";
-// import PhoneInput from "react-phone-number-input";
-// import Alert from "react-bootstrap/Alert";
-// import "./FeedbackForm.css"
+import React, { useState } from "react";
+import axios from "axios";
+import styles from "./FeedbackForm.css"; // Make sure to import your CSS file
 
+const FeedbackForm = () => {
+  const [data, setData] = useState({
+    firstName: "",
+    email: "",
+    mob: "",
 
-// function FeedbackForm() {
-//   const [displayform, setDisplay] = useState(true);
-//   const [em_value, setEmValue] = useState("");
-//   const [nm_value, setNmValue] = useState("");
-//   const [ph_value, setPhValue] = useState();
+    subject: "",
+  });
+  const [error, setError] = useState("");
 
-//   const [error_msg, setErrorMsg] = useState(
-//     "Please enter the value for the above field"
-//   );
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
 
-//   const validateForm = () => {
-//     setErrorMsg("Please enter the value for the above field");
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
 
-//     [...document.getElementsByClassName("alert-danger")].forEach((element) => {
-//       element.style.display = "none";
-//     });
-//     if (nm_value === "") {
-//       document.getElementById("name_er").style.display = "block";
-//     } else if (em_value === "") {
-//       document.getElementById("email_er").style.display = "block";
-//     } else if (!em_value.includes(".com") || !em_value.includes("@")) {
-//       document.getElementById("email_er").style.display = "block";
-//       setErrorMsg("Invalid Email");
-//     } else if (!ph_value) {
-//       document.getElementById("phone_er").style.display = "block";
-//     } else if (ph_value.length < 13) {
-//       document.getElementById("phone_er").style.display = "block";
-//       setErrorMsg("Invalid Phone number");
-//     } else return true;
-//   };
+    console.log("Data to be sent:", data);
 
-//   const formSubmit = (e) => {
-//     e.preventDefault();
+    try {
+      const response = await axios.post("/api/feedback", data); // Adjust the API endpoint URL
+      console.log("Data sent successfully:", response.data);
+      // Reset form data after successful submission
+      setData({
+        firstName: "",
+        email: "",
+        mob: "",
+        city: "",
+        subject: "",
+      });
+    } catch (error) {
+      console.error("Error sending data:", error);
+    }
+  };
 
-//     if (validateForm()) {
-//       setDisplay(false);
-//     }
-//   };
+  //   const isFormValid = () => {
+  //     if (
+  //       data.firstName.trim() === "" ||
+  //       data.email.trim() === "" ||
+  //       data.mob.trim() === "" ||
+  //       data.city.trim() === "" ||
+  //       data.subject.trim() === ""
+  //     ) {
+  //       setError("Please fill in all the fields.");
+  //       return false;
+  //     }
 
-//   return (
-//     <Container>
-//       {displayform ? (
-//         <Card>
-//           <Card.Header>
-//             <cite title="Source Title">Your feedback is valuable for us.</cite>
-//           </Card.Header>
+  //     const firstnameRegex = /^[a-zA-Z_]{3,16}$/;
+  //     if (!firstnameRegex.test(data.firstName.trim())) {
+  //       setError("Please enter valid name.");
+  //       return false;
+  //     }
 
-//           <Container className="padding30px">
-//             <Form>
-//               <Row>
-//                 <Col>
-//                   <Form.Group className="mb-3" controlId="formBasicEmail">
-//                     <Form.Label className="required-field">
-//                       Your Name
-//                     </Form.Label>
-//                     <Form.Control
-//                       type="text"
-//                       required
-//                       placeholder="E.g. jon snow"
-//                       value={nm_value}
-//                       onChange={(e) => setNmValue(e.target.value)}
-//                     />
-//                   </Form.Group>
-//                   <Alert variant="danger" id="name_er">
-//                     &#9432;{error_msg}
-//                   </Alert>
-//                 </Col>
-//                 <Col>
-//                   <Form.Group className="mb-3" controlId="formBasicEmail">
-//                     <Form.Label className="required-field">
-//                       Email address
-//                     </Form.Label>
-//                     <Form.Control
-//                       type="email"
-//                       required
-//                       placeholder="E.g. abc@gmail.com"
-//                       value={em_value}
-//                       onChange={(e) => setEmValue(e.target.value)}
-//                     />
-//                   </Form.Group>
-//                   <Alert variant="danger" id="email_er">
-//                     &#9432;{error_msg}
-//                   </Alert>
-//                 </Col>
-//               </Row>
-//               <Row>
-//                 <Col>
-//                   <Form.Group className="mb-3" controlId="formBasicEmail">
-//                     <Form.Label className="required-field">Phone</Form.Label>
-//                     <InputGroup>
-//                       <PhoneInput
-//                         placeholder="9999999999"
-//                         value={ph_value}
-//                         onChange={setPhValue}
-//                       />
-//                     </InputGroup>
-//                   </Form.Group>
-//                   <Alert variant="danger" id="phone_er">
-//                     &#9432;{error_msg}
-//                   </Alert>
-//                 </Col>
-//                 <Col></Col>
-//               </Row>
-//               <Form.Group controlId="feedbackText">
-//                 <Form.Label>Feedback</Form.Label>
-//                 <Form.Control
-//                   as="textarea"
-//                   rows={4}
-//                   name="feedbackText"
-//                   placeholder="please enter your feedback!"
-//                   required
-//                 />
-//               </Form.Group>
+  //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  //     if (!emailRegex.test(data.email)) {
+  //       setError("Invalid email address.");
+  //       return false;
+  //     }
 
-//               <Button className="btn_purp" onClick={(e) => formSubmit(e)}>
-//                 Submit
-//               </Button>
-//             </Form>
-//           </Container>
-//         </Card>
-//       ) : (
-//         <Card bg="light" text="dark">
-//           <Card.Body>
-//             <div className="padding30px">
-//               <div class="circle">
-//                 <div class="checkmark"></div>
-//               </div>
-//             </div>
-//             <Card.Text>Thank you for providing the feedback</Card.Text>
-//             <Form.Text muted>
-//               We will work towards improving your experience
-//             </Form.Text>
-//             <div className="padding30px">
-//               <Button
-//                 className="btn_purp"
-//                 onClick={() => (window.location.href = "/")}
-//               >
-//                 Close
-//               </Button>
-//             </div>
-//           </Card.Body>
-//         </Card>
-//       )}
-//     </Container>
-//   );
-// }
+  //     const mobRegex = /^\d{10}$/;
+  //     if (!mobRegex.test(data.mob.trim())) {
+  //       setError("Invalid mobile number.");
+  //       return false;
+  //     }
 
-// export default FeedbackForm;
+  //     const cityRegex = /^[a-zA-Z_]{2,30}$/;
+  //     if (!cityRegex.test(data.city.trim())) {
+  //       setError("Please enter valid city.");
+  //       return false;
+  //     }
+
+  //     const SubjectRegex = /^.{1,50}$/;
+  //     if (!SubjectRegex.test(data.subject.trim())) {
+  //       setError("This is mandetory.");
+  //       return false;
+  //     }
+
+  //     setError("");
+  //     return true;
+  //   };
+
+  // function closeContactonclick() {
+  //   document.querySelector(".contact-form-container").classList.remove("active");
+  // }
+
+  return (
+    <>
+      <section>
+        <div className="FeedBack w-75 me-auto ms-auto mb-5 bg-light px-3 py-3 rounded border border-black">
+          <form onSubmit={handleFormSubmit}>
+            <h1>Please give Us Feedback About this Job</h1>
+            <div className="mb-3 inparea">
+              <label htmlFor="firstName" className="form-label">
+                Name
+              </label>
+              <input
+                type="text"
+                placeholder="First Name"
+                name="firstName"
+                onChange={handleChange}
+                value={data.firstName}
+                required
+              />
+            </div>
+            <div className="mb-3 inparea">
+              <label htmlFor="email" className="form-label">
+                Email address
+              </label>
+              <input
+                type="email"
+                placeholder="Email"
+                name="email"
+                onChange={handleChange}
+                value={data.email}
+                required
+              />
+            </div>
+            <div className="mb-3 inparea">
+              <label htmlFor="mob" className="form-label">
+                Contact No
+              </label>
+              <input
+                type="text"
+                placeholder="Mobile Number"
+                name="mob"
+                onChange={handleChange}
+                value={data.mob}
+                required
+              />
+            </div>
+            <div className="my-3 inparea">
+              <label htmlFor="subject" className="form-label">
+                Enter your Grievance
+              </label>
+              <textarea
+                type="textarea"
+                placeholder="Grievance"
+                name="subject"
+                onChange={handleChange}
+                value={data.subject}
+                required
+              ></textarea>
+            </div>
+            {/* {error && <div className={styles.error_msg}>{error}</div>} */}
+            <div className="FdbkSbumit">
+              {" "}
+              <button className="Submitbtn" type="submit">
+                Send Message
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </>
+  );
+};
+
+export default FeedbackForm;

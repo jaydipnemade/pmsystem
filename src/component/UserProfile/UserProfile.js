@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
-
+import axios from "axios"; 
 import Button from "react-bootstrap/Button";
 
 // import CarService from "../../services/CarService";
@@ -58,7 +58,21 @@ const UserProfile = () => {
     // Scroll to the section
     section.scrollIntoView({ behavior: "smooth" });
   };
-
+  // 
+  // 
+  // 
+    const [userData, setUserData] = useState({});
+  useEffect(() => {
+    // Fetch user data from the backend
+    axios
+      .get("/api/user-profile") // Replace with your API endpoint
+      .then((response) => {
+        setUserData(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching user data:", error);
+      });
+  }, []);
   return (
     <>
       <section className="UserProfile">
