@@ -37,49 +37,7 @@ function App() {
     navbarComponent = <CanNavbar />;
   }
   return (
-    <BrowserRouter>
-      {navbarComponent}
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/Home" element={<Home />} />
-        <Route
-          path="/ResumeBuilder"
-          element={
-            <ProtectedRoute allowedRoles={["user"]}>
-              <ResumeBuilder />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="/UserLogin" element={<UserLogin />} />
-        <Route path="/UserRegistration" element={<UserRegistration />} />
-        <Route path="/AboutUs" element={<AboutUs />} />
-        <Route path="/MeetOurTeam" element={<MeetOurTeam />} />
-        <Route path="/RecruiterLogin" element={<RecruiterLogin />} />
-        <Route path="/UserProfile" element={<UserProfile />} />
-        <Route path="/AdminProfile" element={<AdminProfile />} />
-        <Route path="/RecruiterInfo" element={<RecruiterInfo />} />
-        <Route path="/CreateJob" element={<CreateJob />} />
-        <Route path="/FeedbackForm" element={<FeedbackForm />} />
-        <Route path="/RecProfile" element={<RecProfile />} />
-        <Route path="/BioData" element={<BioData />} />
-        <Route path="/JobInformation" element={<JobInformation />} />
-        <Route path="/EduProject" element={<EduProject />} />
-        <Route path="/PersonalInfo" element={<PersonalInfo />} />
-        <Route path="/Qualification" element={<Qualification />} />
-        <Route path="/WorkExperience" element={<WorkExperience />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
-  
-    
-  );
-}
-
-export default App;
-
-  {
-    /* <BrowserRouter>
+     <BrowserRouter>
       {navbarComponent}
       <Routes>
         <Route path="/" element={<Home />} />
@@ -184,5 +142,48 @@ export default App;
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
-    </BrowserRouter> */
+    </BrowserRouter> 
+    // <BrowserRouter>
+    //   {navbarComponent}
+    //   <Routes>
+    //     <Route path="/" element={<Home />} />
+    //     <Route path="/Home" element={<Home />} />
+    //     <Route
+    //       path="/ResumeBuilder"
+    //       element={
+    //         <ProtectedRoute allowedRoles={["user"]}>
+    //           <ResumeBuilder />
+    //         </ProtectedRoute>
+    //       }
+    //     />
+    //     <Route path="/UserLogin" element={<UserLogin />} />
+    //     <Route path="/UserRegistration" element={<UserRegistration />} />
+    //     <Route path="/AboutUs" element={<AboutUs />} />
+    //     <Route path="/MeetOurTeam" element={<MeetOurTeam />} />
+    //     <Route path="/RecruiterLogin" element={<RecruiterLogin />} />
+    //     <Route path="/UserProfile" element={<UserProfile />} />
+    //     <Route path="/AdminProfile" element={<AdminProfile />} />
+    //     <Route path="/RecruiterInfo" element={<RecruiterInfo />} />
+    //     <Route path="/CreateJob" element={<CreateJob />} />
+    //     <Route path="/FeedbackForm" element={<FeedbackForm />} />
+    //     <Route path="/RecProfile" element={<RecProfile />} />
+    //     <Route path="/BioData" element={<BioData />} />
+    //     <Route path="/JobInformation" element={<JobInformation />} />
+    //     <Route path="/EduProject" element={<EduProject />} />
+    //     <Route path="/PersonalInfo" element={<PersonalInfo />} />
+    //     <Route path="/Qualification" element={<Qualification />} />
+    //     <Route path="/WorkExperience" element={<WorkExperience />} />
+    //     <Route path="*" element={<NotFound />} />
+    //   </Routes>
+    //   <Footer />
+    // </BrowserRouter>
+  
+    
+  );
+}
+
+export default App;
+
+  {
+    
   }
