@@ -100,7 +100,7 @@ function Home() {
         </Card>
       </section>
       <section>
-        <Carousel  className="carousel-image">
+        <Carousel className="carousel-image">
           <Carousel.Item interval={1000}>
             <Row className="mb-3">
               <Col md={3}>
@@ -159,57 +159,145 @@ function Home() {
         </h1>
         <div className="boxContainer">
           <div className="box">
-            <i className="fas fa-car" />
-            <h3>Car Selling</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-              facilis sapiente suscipit explicabo natus ducimus?
-            </p>
+            <div class="imagewrap">
+              <img
+                src="https://img.naukimg.com/logo_images/groups/v2/4577755.gif"
+                alt="Accolite Digital"
+                class="logoImage"
+              />
+            </div>
+            <h3>Accolite Digital</h3>
+            <div>
+              <img
+                src="//static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg"
+                alt="rating"
+              />
+              3.8 | 33.1K+ reviews
+            </div>
+            <p>Digital transformation services provider.</p>
             <button className="btn1">Read More</button>
           </div>
           <div className="box">
-            <i className="fas fa-tools" />
-            <h3>Parts Repair</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-              facilis sapiente suscipit explicabo natus ducimus?
-            </p>
+            <div class="imagewrap">
+              <img
+                src="https://img.naukimg.com/logo_images/groups/v2/8270081.gif"
+                alt="VXI Global Solutions LLC"
+                class="logoImage"
+              />
+            </div>
+            <h3>VXI Global Solutions</h3>
+            <div>
+              <img
+                src="//static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg"
+                alt="rating"
+              />
+              3.8 | 33.1K+ reviews
+            </div>
+            <p>No. 1 Customer Care Solutions Provider.</p>
             <button className="btn1">Read More</button>
           </div>
           <div className="box">
-            <i className="fas fa-car-crash" />
-            <h3>Car Insurance</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-              facilis sapiente suscipit explicabo natus ducimus?
-            </p>
+            <div class="imagewrap">
+              <img
+                src="https://img.naukimg.com/logo_images/groups/v2/29798.gif"
+                alt="Reliance Industries (RIL)"
+                class="logoImage"
+              />
+            </div>
+            <h3>Reliance Industries</h3>
+            <div>
+              <img
+                src="//static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg"
+                alt="rating"
+              />
+              3.8 | 33.1K+ reviews
+            </div>
+            <p>Indian multinational conglomerate company.</p>
             <button className="btn1">Read More</button>
           </div>
           <div className="box">
-            <i className="fas fa-car-battery" />
-            <h3>Battery Replacement</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-              facilis sapiente suscipit explicabo natus ducimus?
-            </p>
+            <img
+              src="https://img.naukimg.com/logo_images/groups/v2/214440.gif"
+              alt="Reliance Retail"
+              class="logoImage"
+            />
+            <h3>Reliance Retail</h3>
+            <div>
+              <img
+                src="//static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg"
+                alt="rating"
+              />
+              3.8 | 33.1K+ reviews
+            </div>
+            <p>One of India's Top 100 workplaces in 2022.</p>
             <button className="btn1">Read More</button>
           </div>
           <div className="box">
-            <i className="fas fa-gas-pump" />
-            <h3>Oil Change</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-              facilis sapiente suscipit explicabo natus ducimus?
-            </p>
+            <img
+              src="https://img.naukimg.com/logo_images/groups/v2/41608.gif"
+              alt="Wipro"
+              class="logoImage"
+            />
+            <h3>Wipro</h3>
+            <div>
+              <img
+                src="//static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg"
+                alt="rating"
+              />
+              3.8 | 33.1K+ reviews
+            </div>
+            <p>Technolgy services & consulting company.</p>
             <button className="btn1">Read More</button>
           </div>
           <div className="box">
-            <i className="fas fa-headset" />
-            <h3>24*7 Support</h3>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Delectus
-              facilis sapiente suscipit explicabo natus ducimus?
-            </p>
+            <img
+              src="https://img.naukimg.com/logo_images/groups/v2/1186200.gif"
+              alt="Virtusa"
+              class="logoImage"
+            />
+            <h3>Virtusa</h3>
+            <div>
+              <img
+                src="//static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg"
+                alt="rating"
+              />
+              3.8 | 33.1K+ reviews
+            </div>
+            <p>Global provider of IT outsourcing services.</p>
+            <button className="btn1">Read More</button>
+          </div>
+          <div className="box">
+            <img
+              src="https://img.naukimg.com/logo_images/groups/v2/4156.gif"
+              alt="Cognizant"
+              class="logoImage"
+            />
+            <h3>Cognizant</h3>
+            <div>
+              <img
+                src="//static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg"
+                alt="rating"
+              />
+              3.8 | 33.1K+ reviews
+            </div>
+            <p>Leading ITeS company with global presence.</p>
+            <button className="btn1">Read More</button>
+          </div>
+          <div className="box">
+            <img
+              src="https://img.naukimg.com/logo_images/groups/v2/315118.gif"
+              alt="Datamatics"
+              class="logoImage"
+            />
+            <h3>Datamatics</h3>
+            <div>
+              <img
+                src="//static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/star.0f830ab5.svg"
+                alt="rating"
+              />
+              3.8 | 33.1K+ reviews
+            </div>
+            <p>Global digital solution & technology company.</p>
             <button className="btn1">Read More</button>
           </div>
         </div>

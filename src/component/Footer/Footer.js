@@ -23,10 +23,22 @@ const Footer = () => {
                 <strong>Connect with us</strong>
               </p>
 
-              <img src={fb} alt="Icon" style={{ width: "30px" }} />
-              <img src={insta} alt="Icon" style={{ width: "30px" }} />
-              <img src={twitter} alt="Icon" style={{ width: "30px" }} />
-              <img src={linkedin} alt="Icon" style={{ width: "30px" }} />
+              <a href="https://www.facebook.com/joydip.nemade" target="_blank">
+                {" "}
+                <img src={fb} alt="Icon" style={{ width: "30px" }} />
+              </a>
+              <a
+                href="https://instagram.com/jaydip_nemade_?igshid=OGQ5ZDc2ODk2ZA=="
+                target="_blank"
+              >
+                <img src={insta} alt="Icon" style={{ width: "30px" }} />
+              </a>
+              <a href="https://twitter.com" target="_blank">
+                <img src={twitter} alt="Icon" style={{ width: "30px" }} />
+              </a>
+              <a href="www.linkedin.com/in/jaydipnemade16" target="_blank">
+                <img src={linkedin} alt="Icon" style={{ width: "30px" }} />
+              </a>
             </div>
           </div>
 
@@ -62,7 +74,7 @@ const Footer = () => {
                   className="nav-link active"
                   style={{ backgroundColor: "transparent" }}
                 >
-                 CreateJob
+                  CreateJob
                 </Link>
               </li>
             </ul>
