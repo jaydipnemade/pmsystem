@@ -81,7 +81,10 @@ section {
   font-size: 40px;
   margin-top: 0;
 }
-
+.white-link {
+  color: white;
+  
+}
 .input {
   outline: none;
   border: none;

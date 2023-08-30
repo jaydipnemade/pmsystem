@@ -203,7 +203,7 @@ const UserRegistration = () => {
 
               <Row className="mb-3 input1">
                 <Form.Group as={Col} controlId="formGridCity">
-                  <h2>Enter Email Id</h2>
+                  <h2>Enter email ID</h2>
                   {/* <input
                     type="text"
                     placeholder="Mobile Number"

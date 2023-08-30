@@ -11,48 +11,47 @@ function BioData() {
   const [user, setUser] = useState({
     name: "",
     email: "",
-    // alternateEmail: "",
     mobile: "",
   });
 
   const [project, setProject] = useState({
     projectName: "",
-    // projectDescription: "",
   });
 
   const [workExperience, setWorkExperience] = useState({
     designation: "",
-    // organization: "",
-    // fromDate: "",
-    // toDate: "",
-    // natureOfWork: "",
   });
 
   const [personalInfo, setPersonalInfo] = useState({
     dob: "", // Date of Birth
-    // gender: "",
-    // nationality: "",
     languageKnown: "",
     hobbies: "",
     address: "",
-    // technical: "",
   });
 
   const [qualification, setQualification] = useState({
     institutionName: "",
-    // degree: "",
-    // field: "",
-    // start: "",
-    // end: "",
-    // percentage: "",
   });
+  const [profImgs, setImage] = useState([]);
+  let base64code = "";
 
+  const onLoad = (fileString) => {
+    this.base64code = fileString;
+  };
+  const getBase64 = (file) => {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      onLoad(reader.result);
+    };
+    // alert("Product added Successfully");
+  };
+  // to do uppend incompleate
   // USER VALIDATION
 
   const [userValidationErrors, setUserValidationErrors] = useState({
     name: "",
     email: "",
-    // alternateEmail: "",
     mobile: "",
   });
 
@@ -87,7 +86,6 @@ function BioData() {
   // Project Validation
   const [projectValidationErrors, setProjectValidationErrors] = useState({
     projectName: "",
-    // projectDescription: "",
   });
 
   const projectValidateForm = () => {
@@ -113,10 +111,6 @@ function BioData() {
     useState([
       {
         designation: "",
-        // organization: "",
-        // fromDate: "",
-        // toDate: "",
-        // natureOfWork: "",
       },
     ]);
 
@@ -125,9 +119,6 @@ function BioData() {
     let isValid = true;
 
     if (!workExperience.designation.match(/^[A-Za-z]/)) {
-      //   window.alert(
-      //     "designation must start with an alphabet character && Should not be empty"
-      //   );
       errors.designation =
         "designation must start with an alphabet character && Should not be empty";
       setWorkExperienceValidationErrors(errors);
@@ -142,10 +133,6 @@ function BioData() {
   const [personalInfoValidationErrors, setPersonalInfoValidationErrors] =
     useState({
       dob: "",
-      //   gender: "",
-      //   nationality: "",
-      //   languageKnown: "",
-      //   hobbies: "",
       address: "",
       technical: "",
     });
@@ -189,11 +176,6 @@ function BioData() {
   const [qualificationValidationErrors, setQualificationValidationErrors] =
     useState({
       institutionName: "",
-      //   degree: "",
-      //   field: "",
-      //   start: "",
-      //   end: "",
-      //   percentage: "",
     });
 
   const qualificationValidateForm = () => {
@@ -240,7 +222,7 @@ function BioData() {
     }
 
     const formData = new FormData();
-    formData.append("profileImage", selectedImage);
+    // formData.append("profileImage", selectedImage);
 
     // Append other form fields
     formData.append("userData", JSON.stringify(user));
@@ -248,7 +230,7 @@ function BioData() {
     formData.append("workExperienceData", JSON.stringify([workExperience]));
     formData.append("personalInfoData", JSON.stringify([personalInfo]));
     formData.append("qualificationData", JSON.stringify([qualification]));
-
+    formData.append("profImgs", profImgs);
     try {
       console.log("Sending POST request to the backend...");
       // itration for console log
@@ -323,32 +305,32 @@ function BioData() {
   };
 
   // image handaling
-  const [selectedImage, setSelectedImage] = useState(null);
-  const handleImageChange = (e) => {
-    setSelectedImage(e.target.files[0]);
-  };
-  const handleImageUpload = async () => {
-    if (!selectedImage) {
-      console.log("No image selected.");
-      return;
-    }
+  // const [selectedImage, setSelectedImage] = useState(null);
+  // const handleImageChange = (e) => {
+  //   setSelectedImage(e.target.files[0]);
+  // };
+  // const handleImageUpload = async () => {
+  //   if (!selectedImage) {
+  //     console.log("No image selected.");
+  //     return;
+  //   }
 
-    const formData = new FormData();
-    formData.append("profileImage", selectedImage);
+  //   const formData = new FormData();
+  //   formData.append("profileImage", selectedImage);
 
-    try {
-      console.log("Uploading image...");
+  //   try {
+  //     console.log("Uploading image...");
 
-      const response = await axios.post(
-        "http://localhost:9090/api/resume/upload-image",
-        formData,
-        { headers: { "Content-Type": "multipart/form-data" } }
-      );
-      console.log("Image upload response:", response.data);
-    } catch (error) {
-      console.error("Error uploading image:", error);
-    }
-  };
+  //     const response = await axios.post(
+  //       "http://localhost:9090/api/resume/upload-image",
+  //       formData,
+  //       { headers: { "Content-Type": "multipart/form-data" } }
+  //     );
+  //     console.log("Image upload response:", response.data);
+  //   } catch (error) {
+  //     console.error("Error uploading image:", error);
+  //   }
+  // };
 
   return (
     <>
@@ -385,21 +367,7 @@ function BioData() {
                   <p className="error">{userValidationErrors.email}</p>
                 )}
               </Form.Group>
-              {/* alternate Email */}
-              {/* <Form.Group className="mb-3" controlId="formGroupAlternateEmail">
-                <Form.Label>Alternate Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  placeholder="Alternate Email"
-                  value={user.alternateEmail}
-                  onChange={(e) =>
-                    setUser({ ...user, alternateEmail: e.target.value })
-                  }
-                />
-                {userValidationErrors.alternateEmail && (
-                  <p className="error">{userValidationErrors.alternateEmail}</p>
-                )}
-              </Form.Group> */}
+
               <Form.Group className="mb-3" controlId="formGroupMobile">
                 <Form.Label>Mobile</Form.Label>
                 <Form.Control
@@ -436,7 +404,15 @@ function BioData() {
               {/* Image Input */}
               <Form.Group className="mb-3" controlId="formGroupImage">
                 <Form.Label>Upload Profile Image</Form.Label>
-                <Form.Control type="file" onChange={handleImageChange} />
+                <Form.Control
+                  type="file"
+                  onChange={(p) => {
+                    const file = p.target.files[0];
+                    // getBase64(file);
+                    setImage(file);
+                  }}
+                  required
+                />
               </Form.Group>
               <Button
                 type="submit"

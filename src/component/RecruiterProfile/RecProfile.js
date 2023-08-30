@@ -122,7 +122,10 @@ const RecProfile = () => {
                 {/* <div className="profHead"></div> */}
                 <div className="profilePictureContainer">
                   <img
-                    src={userData.profileImage || defaultProfileImage}
+                    src={
+                      `data:image/jpeg;base64,${userData.profImgs}` ||
+                      defaultProfileImage
+                    }
                     className="card-img-top  roundedCircle border "
                     alt="Profile Pic"
                   />
@@ -235,7 +238,6 @@ const RecProfile = () => {
                     <ul>
                       <li>Phone No:- {userData.cno}</li>
                       <li>Email Id:-{userData.email}</li>
-                      
                     </ul>
                   </div>
                 </div>

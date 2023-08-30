@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form";
-import React, { useState , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./RecruiterInfo.css";
 import company from "./company.jpg";
@@ -15,7 +15,20 @@ function RecruiterInfo() {
     formState: { errors },
     handleSubmit,
   } = useForm();
+  const [profImgs, setImage] = useState([]);
+  let base64code = "";
 
+  const onLoad = (fileString) => {
+    this.base64code = fileString;
+  };
+  const getBase64 = (file) => {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      onLoad(reader.result);
+    };
+    // alert("Product added Successfully");
+  };
   const onSubmit = async (data) => {
     try {
       const formData = new FormData();
@@ -25,6 +38,7 @@ function RecruiterInfo() {
       formData.append("technology", data.technology);
       formData.append("description", description);
       formData.append("date", date);
+      formData.append("profImgs", profImgs);
       console.log("Data before sending:", data);
       const response = await axios.post("http://localhost:8080", formData, {
         headers: {
@@ -42,26 +56,26 @@ function RecruiterInfo() {
     } catch (error) {
       console.error("Error sending data:", error);
     }
+  };
+  useEffect(() => {
+    const handleScroll = (event) => {
+      if (window.scrollY > 0) {
+        document.querySelector(".header").classList.add("active");
+      } else {
+        document.querySelector(".header").classList.remove("active");
+      }
+      let menu = document.querySelector("#menu-btn1");
+      let navbar = document.querySelector(".navbar");
+      menu.classList.remove("fa-times");
+      navbar.classList.remove("active");
     };
-      useEffect(() => {
-        const handleScroll = (event) => {
-          if (window.scrollY > 0) {
-            document.querySelector(".header").classList.add("active");
-          } else {
-            document.querySelector(".header").classList.remove("active");
-          }
-          let menu = document.querySelector("#menu-btn1");
-          let navbar = document.querySelector(".navbar");
-          menu.classList.remove("fa-times");
-          navbar.classList.remove("active");
-        };
 
-        window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
-        return () => {
-          window.removeEventListener("scroll", handleScroll);
-        };
-      }, []);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -166,10 +180,16 @@ function RecruiterInfo() {
               </div>
               <div className="Image mt-4">
                 <label htmlFor="image">Passport Size Image</label>
+                {/* img handle */}
                 <input
                   type="file"
                   accept="image/*"
-                  {...register("image", { required: true })}
+                  onChange={(p) => {
+                    const file = p.target.files[0];
+                    // getBase64(file);
+                    setImage(file);
+                  }}
+                  required
                   className="image-input form-control form-control-lg mb-2"
                   id="image"
                 />

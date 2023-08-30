@@ -127,8 +127,10 @@ const UserLogin = () => {
                   Sign In
                 </button>
                 <h3>
-                  Don't have an account ? Create
-                  <Link to="/UserRegistration"> One</Link>
+                  Don't have an account ? Create{" "}
+                  <Link to="/UserRegistration" className="white-link">
+                    One
+                  </Link>
                 </h3>
               </form>
             </div>

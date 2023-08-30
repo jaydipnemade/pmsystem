@@ -5,9 +5,6 @@ import Container from "react-bootstrap/Container";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 
-// import CarService from "../../services/CarService";
-// import UserService from "../../services/UserService";
-// import BookingService from "../../services/BookingService";
 import "./UserProfile.css";
 
 const UserProfile = () => {
@@ -62,7 +59,6 @@ const UserProfile = () => {
   //
   //
   const [candidateInfo, setCandidateInfo] = useState({});
-
   const [projectData, setProjectData] = useState({});
   const [personalInfoData, setPersonalInfoData] = useState({});
   const [workExperienceData, setWorkExperienceData] = useState({});
@@ -128,7 +124,10 @@ const UserProfile = () => {
                 {/* <div className="profHead"></div> */}
                 <div className="profilePictureContainer">
                   <img
-                    src={candidateInfo.profilePic || require("./test1.jpeg")}
+                    src={
+                      `data:image/jpeg;base64,${candidateInfo.profImgs}` ||
+                      require("./test1.jpeg")
+                    }
                     // src={require("./test0.jpg")}
                     className="card-img-top  roundedCircle border "
                     alt="Profile Pic"
