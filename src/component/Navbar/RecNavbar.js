@@ -105,12 +105,71 @@ function Navbar() {
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
+          <div className="dropdown">
+            {isLoggedIn ? (
+              <div className="dropdown-btn">
+                | Hi, {localStorage.getItem("name")}{" "}
+                <i className="fa-solid fa-chevron-down"></i>
+              </div>
+            ) : (
+              <button className="dropdown-btn">
+                Hey Please Login <i className="fa-solid fa-chevron-down"></i>
+              </button>
+            )}
+            <div className="dropdown-content">
+              {isLoggedIn ? (
+                <>
+                  <Link to={"/RecProfile"}>view Profile</Link>
+                  <Link to={"/CreateJob"}>Post a Job</Link>
+                  <Link to={"/UserLogin"} onClick={handleLogout}>
+                    Logout
+                  </Link>
+                </>
+              ) : (
+                <Link to={"/UserLogin"}>Login</Link>
+              )}
+              {/* Add more dropdown items as needed */}
+            </div>
+          </div>
+
+          {/* {isLoggedIn && (
+            <Link
+              to={"/Home"}
+              className="nav-link active"
+              style={{ backgroundColor: "transparent" }}
+            >
+              <i className="fa-solid fa-bell fa-shake fa-2xl"></i>
+            </Link>
+          )} */}
         </nav>
-        <div className="dropdown">
-          <Link className="dropdown-link" to={"/UserLogin"}>
-            Hey Please Login
-          </Link>
-        </div>
+        {/* new code */}
+        {/* <div className="Navcontainer" id="login-btn1">
+          {isLoggedIn ? (
+            <div className="Navprofile-circle" onClick={handleProfileClick}>
+              <img src={""} alt="User Avatar" />
+            </div>
+          ) : (
+            <Link
+              to={"/UserLogin"}
+              className="nav-link active"
+              style={{ backgroundColor: "transparent" }}
+            >
+          
+              <button className="btn1">Login</button>
+              <i className="far fa-user"></i>
+            </Link>
+          )}
+          {isDropdownOpen && (
+            <div className="Navdropdown">
+              <div className="Navdropdown-item" onClick={handleProfileClick}>
+                View Profile
+              </div>
+              <div className="Navdropdown-item" onClick={handleLogout}>
+                Logout
+              </div>
+            </div>
+          )}
+        </div> */}
       </header>
     </>
   );

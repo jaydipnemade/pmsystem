@@ -47,7 +47,7 @@ function EduProject() {
     setProjectValidationErrors(errors);
     return isValid;
   };
-
+ const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const isValidate = projectValidateForm();
@@ -61,7 +61,8 @@ function EduProject() {
         `http://localhost:9090/api/resume/submit-project/${userId}`,
         project
       );
-      window.alert("Data Added ");
+        window.alert("Data Added ");
+           setSubmissionSuccess(true);
     } catch (error) {
       window.alert("error : " + error);
     }
@@ -121,9 +122,9 @@ function EduProject() {
                 Submit
               </Button>
               {/* Button to navigate to next step */}
-                          <Link to="/WorkExperience">Prev</Link>
-                          -
-              <Link to="/Qualification">Next</Link>
+              {submissionSuccess && (
+                <Link to="/UserProfile">Go to UserProfile</Link>
+              )}
             </Form>
           </div>
         </div>

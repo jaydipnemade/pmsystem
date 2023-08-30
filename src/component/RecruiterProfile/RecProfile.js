@@ -89,6 +89,28 @@ const RecProfile = () => {
   //
   //
   //
+   const [userData, setUserData] = useState({
+     name: "",
+     personalInfo: "",
+     profileImage: null, // Initialize with null
+   });
+    useEffect(() => {
+      const fetchUserData = async () => {
+        try {
+          const response = await axios.get("/api/recruiter/profile"); // Replace with your API endpoint
+          const userDataFromApi = response.data;
+          setUserData(userDataFromApi);
+        } catch (error) {
+          console.error("Error fetching user data:", error);
+        }
+      };
+
+      fetchUserData();
+    }, []);
+  const defaultProfileImage = require("./noimagefounf.jpeg");
+  // 
+  // 
+  // 
 
   return (
     <>
@@ -100,7 +122,7 @@ const RecProfile = () => {
                 {/* <div className="profHead"></div> */}
                 <div className="profilePictureContainer">
                   <img
-                    src={require("./test0.jpg")}
+                    src={userData.profileImage || defaultProfileImage}
                     className="card-img-top  roundedCircle border "
                     alt="Profile Pic"
                   />
@@ -116,12 +138,9 @@ const RecProfile = () => {
               </div>
               <div className="RecProfileInfoContainer">
                 {/* Rec name */}
-                <h1> Jaydip Nemade.</h1>
+                <h1>{userData.company_name}.</h1>
                 {/* head tag that is education */}
-                <p>
-                  Pursuing PG - DAC at Centre for Development of Advanced
-                  Computing (C-DAC),Mumbai
-                </p>
+                <p>{userData.heading}</p>
                 <hr />
                 <Button size="lg" disabled={isLoading} onClick={handleClick}>
                   {isLoading ? "Loading…" : "Create Job"}
@@ -174,14 +193,7 @@ const RecProfile = () => {
                 </div>
                 <h1> About</h1>
 
-                <p>
-                  Enthusiastic CDAC student with a passion for technology and a
-                  drive to excel in the world of IT. Currently honing my skills
-                  in Advanced Computing, I am dedicated to learning and applying
-                  cutting-edge concepts to real-world challenges. I am eager to
-                  contribute my knowledge and creativity to innovative projects.
-                  As a proactive learner.
-                </p>
+                <p>{userData.description}</p>
               </div>
             </div>
           </div>
@@ -198,10 +210,7 @@ const RecProfile = () => {
                 </div>
                 <h1>Technologies</h1>
 
-                <p>
-                  Skills: C# · ASP.NET · Node.js · Express.js · REST APIs ·
-                  React.js · Spring Boot · Java · HTML5
-                </p>
+                <p>{userData.technologies}</p>
               </div>
             </div>
           </div>
@@ -224,11 +233,9 @@ const RecProfile = () => {
                 >
                   <div className="col ">
                     <ul>
-                      <li>Phone No:-</li>
-                      <li>Email Id:-</li>
-                      <li>
-                        Permanent address:- <p>{/* address mapping here*/}</p>
-                      </li>
+                      <li>Phone No:- {userData.cno}</li>
+                      <li>Email Id:-{userData.email}</li>
+                      
                     </ul>
                   </div>
                 </div>

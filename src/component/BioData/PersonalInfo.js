@@ -95,7 +95,7 @@ function PersonalInfo() {
     setPersonalInfoValidationErrors(errors);
     return isValid;
   };
-
+  const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const isValidate = personalInfoValidateForm();
@@ -110,6 +110,7 @@ function PersonalInfo() {
         personalInfo
       );
       window.alert("Data Added ");
+      setSubmissionSuccess(true);
     } catch (error) {
       window.alert("error : " + error);
     }
@@ -247,11 +248,18 @@ function PersonalInfo() {
                 )}
               </Form.Group>
 
-              <Button type="submit" variant="primary" onClick={handleSubmit} className="ButtoN  btn btn-primary btn-lg mb-5 ms-auto me-auto  rounded-pill ">
+              <Button
+                type="submit"
+                variant="primary"
+                onClick={handleSubmit}
+                className="ButtoN  btn btn-primary btn-lg mb-5 ms-auto me-auto  rounded-pill "
+              >
                 Submit
               </Button>
               {/* Button to navigate to next step */}
-              <Link to="/qualification">prev</Link>
+              {submissionSuccess && (
+                <Link to="/UserProfile">Go to UserProfile</Link>
+              )}
             </Form>
           </div>
         </div>

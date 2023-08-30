@@ -22,15 +22,34 @@ import EduProject from "./component/BioData/EduProject";
 import PersonalInfo from "./component/BioData/PersonalInfo";
 import Qualification from "./component/BioData/Qualification";
 import WorkExperience from "./component/BioData/WorkExperience";
-
+import RecNavbar from "./component/Navbar/RecNavbar";
+import CanNavbar from "./component/Navbar/CanNavbar";
+import ProtectedRoute from "./component/ProtectRoutes/ProtectRouts";
 function App() {
+  const userRole = "default"; 
+  
+  let navbarComponent = null;
+  if (userRole === "default") {
+    navbarComponent = <Navbar />;
+  } else if (userRole === "recruiter") {
+    navbarComponent = <RecNavbar />;
+  } else if (userRole === "candidate") {
+    navbarComponent = <CanNavbar />;
+  }
   return (
     <BrowserRouter>
-      <Navbar />
+      {navbarComponent}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/Home" element={<Home />} />
-        <Route path="/ResumeBuilder" element={<ResumeBuilder />} />
+        <Route
+          path="/ResumeBuilder"
+          element={
+            <ProtectedRoute allowedRoles={["user"]}>
+              <ResumeBuilder />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/UserLogin" element={<UserLogin />} />
         <Route path="/UserRegistration" element={<UserRegistration />} />
         <Route path="/AboutUs" element={<AboutUs />} />
@@ -52,8 +71,118 @@ function App() {
       </Routes>
       <Footer />
     </BrowserRouter>
-    // <Footer/>
+  
+    
   );
 }
 
 export default App;
+
+  {
+    /* <BrowserRouter>
+      {navbarComponent}
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Home" element={<Home />} />
+        <Route
+          path="/ResumeBuilder"
+          element={
+            <ProtectedRoute allowedRoles={["candidate"]}>
+              <ResumeBuilder />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/UserLogin" element={<UserLogin />} />
+        <Route path="/UserRegistration" element={<UserRegistration />} />
+        <Route path="/AboutUs" element={<AboutUs />} />
+        <Route path="/MeetOurTeam" element={<MeetOurTeam />} />
+        <Route path="/RecruiterLogin" element={<RecruiterLogin />} />
+        <Route
+          path="/UserProfile"
+          element={
+            <ProtectedRoute allowedRoles={["candidate"]}>
+              <UserProfile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/AdminProfile"
+          element={
+            <ProtectedRoute allowedRoles={["admin"]}>
+              <AdminProfile />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/RecruiterInfo"
+          element={
+            <ProtectedRoute allowedRoles={["recruiter"]}>
+              <RecruiterInfo />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/CreateJob"
+          element={
+            <ProtectedRoute allowedRoles={["recruiter"]}>
+              <CreateJob />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/FeedbackForm" element={<FeedbackForm />} />
+        <Route
+          path="/RecProfile"
+          element={
+            <ProtectedRoute allowedRoles={["recruiter"]}>
+              <RecProfile />
+            </ProtectedRoute>
+          }
+        />
+     
+       
+        <Route
+          path="/BioData"
+          element={
+            <ProtectedRoute allowedRoles={["candidate"]}>
+              <BioData />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="/JobInformation" element={<JobInformation />} />
+        <Route
+          path="/EduProject"
+          element={
+            <ProtectedRoute allowedRoles={["candidate"]}>
+              <EduProject />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/PersonalInfo"
+          element={
+            <ProtectedRoute allowedRoles={["candidate"]}>
+              <PersonalInfo />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/Qualification"
+          element={
+            <ProtectedRoute allowedRoles={["candidate"]}>
+              <Qualification />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/WorkExperience"
+          element={
+            <ProtectedRoute allowedRoles={["candidate"]}>
+              <WorkExperience />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+      <Footer />
+    </BrowserRouter> */
+  }

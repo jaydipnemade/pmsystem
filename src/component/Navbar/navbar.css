@@ -204,7 +204,13 @@ section {
   width: 100%;
   margin: 1rem 0;
 }
-
+.dropdown-link {
+  color: black !important;
+  margin-left: 3vw;
+  margin-right: 3vw;
+  text-decoration: none;
+  /* Add more styling as needed */
+}
 /* media queries */
 @media (max-width: 991px) {
   html {

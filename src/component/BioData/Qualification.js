@@ -87,7 +87,7 @@ function Qualification() {
     setQualificationValidationErrors(errors);
     return isValid;
   };
-
+ const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const isValidate = qualificationValidateForm();
@@ -101,7 +101,8 @@ function Qualification() {
         `http://localhost:9090/api/resume/submit-qualification/${userId}`,
         qualification
       );
-      window.alert("Data Added ");
+        window.alert("Data Added ");
+        setSubmissionSuccess(true);
     } catch (error) {
       window.alert("error : " + error);
     }
@@ -233,8 +234,9 @@ function Qualification() {
                 Submit
               </Button>
               {/* Button to navigate to next step */}
-              <Link to="/EduProject">Prev</Link>-
-              <Link to="/PersonalInfo">Next</Link>
+              {submissionSuccess && (
+                <Link to="/UserProfile">Go to UserProfile</Link>
+              )}
             </Form>
           </div>
         </div>
