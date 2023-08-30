@@ -109,8 +109,22 @@ const RecProfile = () => {
     }, []);
   const defaultProfileImage = require("./noimagefounf.jpeg");
   // 
+  //
   // 
-  // 
+  const [recruiterStatus, setRecruiterStatus] = useState("");
+  useEffect(() => {
+    const fetchRecruiterStatus = async () => {
+      try {
+        const response = await axios.get("/api/recruiter/status"); // Replace with your API endpoint
+        setRecruiterStatus(response.data.status);
+      } catch (error) {
+        console.error("Error fetching recruiter status:", error);
+      }
+    };
+
+    fetchRecruiterStatus();
+  }, []);
+
 
   return (
     <>
@@ -122,9 +136,14 @@ const RecProfile = () => {
                 {/* <div className="profHead"></div> */}
                 <div className="profilePictureContainer">
                   <img
+                    // src={
+                    //   `data:image/jpeg;base64,${userData.profImgs}` ||
+                    //   defaultProfileImage
+                    // }
                     src={
-                      `data:image/jpeg;base64,${userData.profImgs}` ||
-                      defaultProfileImage
+                      userData.profImgs
+                        ? `data:image/jpeg;base64,${userData.profImgs}`
+                        : defaultProfileImage
                     }
                     className="card-img-top  roundedCircle border "
                     alt="Profile Pic"
@@ -145,9 +164,14 @@ const RecProfile = () => {
                 {/* head tag that is education */}
                 <p>{userData.heading}</p>
                 <hr />
-                <Button size="lg" disabled={isLoading} onClick={handleClick}>
+                <Button
+                  size="lg"
+                  disabled={isLoading || recruiterStatus !== "Approved"}
+                  onClick={handleClick}
+                >
                   {isLoading ? "Loading…" : "Create Job"}
                 </Button>
+
                 <Button
                   size="lg"
                   className="blue-border-button"
