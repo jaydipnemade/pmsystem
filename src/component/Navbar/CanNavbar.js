@@ -132,7 +132,9 @@ function Navbar() {
                 </Link>
               </>
             ) : (
-              <Link to={"/UserLogin"}>Login</Link>
+              <Link style={{ color: "#130f40" }}  to={"/UserLogin"}>
+                Login
+              </Link>
             )}
             {/* Add more dropdown items as needed */}
           </div>
