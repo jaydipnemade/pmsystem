@@ -159,7 +159,7 @@ const UserProfile = () => {
                 >
                   Personal Info.
                 </Button>
-                <Link to="/BioData">
+                <Link to="/JobsApplied">
                   <Button size="lg" className="blue-border-button">
                     Jobs Applied
                   </Button>
