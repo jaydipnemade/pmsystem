@@ -114,6 +114,7 @@ const UserProfile = () => {
         console.error("Error fetching qualification data:", error);
       });
   }, []);
+   const defaultProfileImage = require("./test1.jpeg");
   return (
     <>
       <section className="UserProfile">
@@ -124,11 +125,15 @@ const UserProfile = () => {
                 {/* <div className="profHead"></div> */}
                 <div className="profilePictureContainer">
                   <img
+                    // src={
+                    //   `data:image/jpeg;base64,${candidateInfo.profImgs}` ||
+                    //   require("./test1.jpeg")
+                    // }
                     src={
-                      `data:image/jpeg;base64,${candidateInfo.profImgs}` ||
-                      require("./test1.jpeg")
+                      candidateInfo.profImgs
+                        ? `data:image/jpeg;base64,${candidateInfo.profImgs}`
+                        : defaultProfileImage
                     }
-                    // src={require("./test0.jpg")}
                     className="card-img-top  roundedCircle border "
                     alt="Profile Pic"
                   />
