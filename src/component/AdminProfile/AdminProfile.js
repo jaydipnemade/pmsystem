@@ -13,17 +13,30 @@ const AdminProfile = () => {
   const [newRecruiters, setNewRecruiters] = useState([]);
   const [recruiterStatus, setRecruiterStatus] = useState(["Pending"]);
   const [selectedValue, setSelectedValue] = useState("");
-  const handleSelectChange = (event) => {
-    const selectedValue = event.target.value;
-    const id = event.target.id;
-
-    // Update the MongoDB data
-    fetch("http://localhost:4000/updatestatus", {
-      method: "post",
+  const [recruiterCount, setRecruiterCount] = useState(0);
+  const [candidateCount, setCandidateCount] = useState(0);
+// count
+  useEffect(() => {
+    fetch("http://localhost:9090/getcounts")
+      .then((response) => response.json())
+      .then((data) => {
+        setRecruiterCount(data.recruiters);
+        setCandidateCount(data.candidates);
+      })
+      .catch((error) => {
+        console.error("Error fetching counts:", error);
+      });
+  }, []);
+// approved denied n all
+  const handleSelectChange = (recruiterId, selectedValue) => {
+    console.log("Selected value:", selectedValue); 
+    // Update the recruiter status using the PUT method
+    fetch(`http://localhost:4000/api/updatestatus/${recruiterId}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ id, selectedValue }),
+      body: JSON.stringify(selectedValue),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -36,6 +49,7 @@ const AdminProfile = () => {
         console.error("Error updating data:", error);
       });
   };
+// scroll 
   useEffect(() => {
     const handleScroll = (event) => {
       if (window.scrollY > 0) {
@@ -76,53 +90,65 @@ const AdminProfile = () => {
   //
   //
   //
-  const handleAddCandidate = () => {
-    const newCandidateObj = {
-      id: candidates.length + 1,
-      name: newCandidates,
-    };
+const handleDeleteCandidate = (candidateId) => {
+  // Make an HTTP DELETE request to the candidate deletion endpoint
+  fetch(`http://localhost:4000/api/deletecandidate/${candidateId}`, {
+    method: "DELETE",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // If deletion is successful, update the front-end state
+      const updatedCandidates = candidates.filter(
+        (candidate) => candidate.id !== candidateId
+      );
+      setCandidates(updatedCandidates);
+    })
+    .catch((error) => {
+      console.error("Error deleting candidate:", error);
+    });
+};
+  //
+  //
+  //
+const handleDeleteRecruiter = (recruiterId) => {
+  // Make an HTTP DELETE request to the recruiter deletion endpoint
+  fetch(`http://localhost:4000/api/deleterecruiter/${recruiterId}`, {
+    method: "DELETE",
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      // If deletion is successful, update the front-end state
+      const updatedRecruiters = recruiters.filter(
+        (recruiter) => recruiter.id !== recruiterId
+      );
+      setRecruiters(updatedRecruiters);
+    })
+    .catch((error) => {
+      console.error("Error deleting recruiter:", error);
+    });
+};
+  //
+  //
+  //
+  useEffect(() => {
+    fetch("http://localhost:9090/getcandidates") // Change the endpoint URL
+      .then((response) => response.json())
+      .then((data) => {
+        setCandidates(data); // Assuming data is an array of candidates
+      })
+      .catch((error) => {
+        console.error("Error fetching candidates:", error);
+      });
 
-    setCandidates([...candidates, newCandidateObj]);
-    setNewCandidates("");
-  };
-  //
-  //
-  //
-  const handleDeleteCandidate = (candidateId) => {
-    // Delete a candidate from the candidates array and update the state
-    // Replace this with your actual API call to delete a candidate
-    const updatedCandidates = candidates.filter(
-      (candidate) => candidate.id !== candidateId
-    );
-
-    setCandidates(updatedCandidates);
-  };
-  //
-  //
-  //
-  const handleAddRecruiter = () => {
-    const newRecruiterObj = {
-      id: recruiters.length + 1,
-      name: newRecruiters,
-      status: recruiterStatus,
-    };
-
-    setRecruiters([...recruiters, newRecruiterObj]);
-    setNewRecruiters("");
-  };
-  //
-  //
-  //
-  const handleDeleteRecruiter = (recruiterId) => {
-    const updatedRecruiters = recruiters.filter(
-      (recruiter) => recruiter.id !== recruiterId
-    );
-
-    setRecruiters(updatedRecruiters);
-  };
-  //
-  //
-  //
+    fetch("http://localhost:9090/getrecruiters") // Change the endpoint URL
+      .then((response) => response.json())
+      .then((data) => {
+        setRecruiters(data); // Assuming data is an array of recruiters
+      })
+      .catch((error) => {
+        console.error("Error fetching recruiters:", error);
+      });
+  }, []);
 
   return (
     <>
@@ -169,7 +195,7 @@ const AdminProfile = () => {
                 <h1> Candidate information</h1>
                 <hr className="horizontal-line" />
                 <div className="line-after-heading"></div>
-                <p>No of Candidate = {/* value from database*/} </p>
+                <p>No of Candidate = {candidateCount} </p>
 
                 <table className="data-table">
                   <thead>
@@ -201,16 +227,6 @@ const AdminProfile = () => {
                     ))}
                   </tbody>
                 </table>
-
-                <div className="add-section">
-                  <input
-                    type="text"
-                    value={newCandidates}
-                    onChange={(e) => setNewCandidates(e.target.value)}
-                    placeholder="Enter candidate name"
-                  />
-                  <Button onClick={handleAddCandidate}>Add Candidate</Button>
-                </div>
               </div>
             </div>
           </div>
@@ -221,7 +237,7 @@ const AdminProfile = () => {
                 <h1> Recruiters Info</h1>
                 <hr className="horizontal-line" />
                 <div className="line-after-heading"></div>
-                <p>No of Recruiters = {/* value from database*/} </p>
+                <p>No of Recruiters = {recruiterCount} </p>
 
                 <table className="data-table">
                   <thead>
@@ -243,7 +259,12 @@ const AdminProfile = () => {
                               name="status"
                               id={recruiter.id} // This should be a unique identifier for each dropdown
                               value={recruiter.status}
-                              onChange={handleSelectChange}
+                              onChange={(event) =>
+                                handleSelectChange(
+                                  recruiter.id,
+                                  event.target.value
+                                )
+                              }
                             >
                               <option value="Pending">Pending</option>
                               <option value="Approved">Approved</option>
@@ -258,43 +279,27 @@ const AdminProfile = () => {
                           >
                             Delete
                           </Button>
+                          <Button
+                            className="approve-button"
+                            onClick={() =>
+                              handleSelectChange(recruiter.id, "Approved")
+                            }
+                          >
+                            Approve
+                          </Button>
+                          <Button
+                            className="reject-button"
+                            onClick={() =>
+                              handleSelectChange(recruiter.id, "Rejected")
+                            }
+                          >
+                            Reject
+                          </Button>
                         </td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
-
-                <div className="add-section">
-                  <input
-                    type="text"
-                    value={newRecruiters}
-                    onChange={(e) => setNewRecruiters(e.target.value)}
-                    placeholder="Enter recruiter name"
-                  />
-                  {/* <Dropdown className="admin_dropdwon">
-                    <Dropdown.Toggle id="status-dropdown">
-                      {recruiterStatus}
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                      <Dropdown.Item
-                        onClick={() => setRecruiterStatus("Pending")}
-                      >
-                        Pending
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => setRecruiterStatus("Approved")}
-                      >
-                        Approved
-                      </Dropdown.Item>
-                      <Dropdown.Item
-                        onClick={() => setRecruiterStatus("Rejected")}
-                      >
-                        Rejected
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown> */}
-                  <Button onClick={handleAddRecruiter}>Add Recruiter</Button>
-                </div>
               </div>
             </div>
           </div>
