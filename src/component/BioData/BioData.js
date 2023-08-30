@@ -23,7 +23,7 @@ function BioData() {
   });
 
   const [personalInfo, setPersonalInfo] = useState({
-    dob: "", // Date of Birth
+    // dob: "", // Date of Birth
     languageKnown: "",
     hobbies: "",
     address: "",

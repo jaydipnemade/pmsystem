@@ -8,38 +8,62 @@ import { Link } from "react-router-dom"; // Import Link
 
 function PersonalInfo() {
   const [personalInfo, setPersonalInfo] = useState({
-    dob: "", // Date of Birth
+    name: "",
+    email: "",
+    mobile: "",
     gender: "",
     nationality: "",
-    languageKnown: "",
+    languages: "",
     hobbies: "",
-    achiever: "",
-    technical: "",
+    skills: "",
+    achievements: "",
+    about: "",
   });
   const [userId, setUserId] = useState(""); // Initialize with an empty string
-
+  const [profImgs, setProfImgs] = useState([]);
   //Validation
   const [personalInfoValidationErrors, setPersonalInfoValidationErrors] =
     useState({
-      dob: "",
+      name: "",
+      email: "",
+      mobile: "",
       gender: "",
       nationality: "",
-      languageKnown: "",
+      languages: "",
       hobbies: "",
-      achiever: "",
-      technical: "",
+      skills: "",
+      achievements: "",
+      about: "",
     });
 
   const personalInfoValidateForm = () => {
     const errors = {};
     let isValid = true;
 
-    if (!personalInfo.dob.match(/^\d{4}-\d{2}-\d{2}$/)) {
-      window.alert("Invalid Date of Birth. Please use YYYY-MM-DD format.");
-      errors.dob = "Invalid Date of Birth. Please use YYYY-MM-DD format.";
+    if (!personalInfo.name.match(/^[A-Za-z, ]+$/)) {
+      // window.alert(
+      //   "Language Known must only contain letters, commas, and spaces"
+      // );
+      errors.name =
+        "Language Known must only contain letters, commas, and spaces";
+      // setPersonalInfoValidationErrors(errors);
+      // return false;
+    }
+    //
+    if (!personalInfo.email.match(/^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$/)) {
+      window.alert("Invalid Email. Please enter a valid email address.");
+      errors.email = "Invalid Email. Please enter a valid email address.";
       setPersonalInfoValidationErrors(errors);
       return false;
     }
+    //
+    if (!personalInfo.mobile.match(/^\d{10}$/)) {
+      window.alert("Invalid Mobile Number. Please enter a 10-digit number.");
+      errors.mobile = "Invalid Mobile Number. Please enter a 10-digit number.";
+      setPersonalInfoValidationErrors(errors);
+      return false;
+    }
+    //
 
     if (!personalInfo.gender) {
       window.alert("Gender is required");
@@ -47,47 +71,56 @@ function PersonalInfo() {
       setPersonalInfoValidationErrors(errors);
       return false;
     }
-
+    //
     if (!personalInfo.nationality) {
       window.alert("Nationality is required");
       errors.nationality = "Nationality is required";
       setPersonalInfoValidationErrors(errors);
       return false;
     }
-
-    if (!personalInfo.languageKnown.match(/^[A-Za-z, ]+$/)) {
-      window.alert(
-        "Language Known must only contain letters, commas, and spaces"
-      );
-      errors.languageKnown =
+    //
+    if (!personalInfo.languages.match(/^[A-Za-z, ]+$/)) {
+      // window.alert(
+      //   "Language Known must only contain letters, commas, and spaces"
+      // );
+      errors.languages =
         "Language Known must only contain letters, commas, and spaces";
-      setPersonalInfoValidationErrors(errors);
-      return false;
+      // setPersonalInfoValidationErrors(errors);
+      // return false;
     }
-
+    //
     if (!personalInfo.hobbies.match(/^[A-Za-z, ]+$/)) {
       window.alert("Hobbies must only contain letters, commas, and spaces");
       errors.hobbies = "Hobbies must only contain letters, commas, and spaces";
       setPersonalInfoValidationErrors(errors);
       return false;
     }
-
-    if (!personalInfo.achiever.match(/^[A-Za-z, ]+$/)) {
+    //
+    if (!personalInfo.skills.match(/^[A-Za-z, ]+$/)) {
+      window.alert(
+        "Technical skills must only contain letters, commas, and spaces"
+      );
+      errors.skills =
+        "Technical skills must only contain letters, commas, and spaces";
+      setPersonalInfoValidationErrors(errors);
+      return false;
+    }
+    //
+    if (!personalInfo.achievements.match(/^[A-Za-z, ]+$/)) {
       window.alert(
         "Achiever details must only contain letters, commas, and spaces"
       );
-      errors.achiever =
+      errors.achievements =
         "Achiever details must only contain letters, commas, and spaces";
       setPersonalInfoValidationErrors(errors);
       return false;
     }
-
-    if (!personalInfo.technical.match(/^[A-Za-z, ]+$/)) {
+    if (!personalInfo.about.match(/^[A-Za-z, ]+$/)) {
       window.alert(
-        "Technical skills must only contain letters, commas, and spaces"
+        "about details must only contain letters, commas, and spaces"
       );
-      errors.technical =
-        "Technical skills must only contain letters, commas, and spaces";
+      errors.about =
+        "about details must only contain letters, commas, and spaces";
       setPersonalInfoValidationErrors(errors);
       return false;
     }
@@ -95,6 +128,23 @@ function PersonalInfo() {
     setPersonalInfoValidationErrors(errors);
     return isValid;
   };
+  //
+  //
+ 
+  let base64code = "";
+
+  const onLoad = (fileString) => {
+    this.base64code = fileString;
+  };
+  const getBase64 = (file) => {
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+      onLoad(reader.result);
+    };
+    // alert("Product added Successfully");
+  };
+
   const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -105,10 +155,31 @@ function PersonalInfo() {
     }
 
     try {
-      const response = await axios.put(
-        `http://localhost:9090/api/resume/submit-personalInfo/${userId}`,
-        personalInfo
+      const formData = new FormData();
+      profImgs.forEach((img, index) => {
+        formData.append(`image${index}`, img);
+      });
+      formData.append("name", personalInfo.name);
+      formData.append("email", personalInfo.email);
+      formData.append("mobile", personalInfo.mobile);
+      formData.append("gender", personalInfo.gender);
+      formData.append("nationality", personalInfo.nationality);
+      formData.append("languages", personalInfo.languages);
+      formData.append("hobbies", personalInfo.hobbies);
+      formData.append("skills", personalInfo.skills);
+      formData.append("achievements", personalInfo.achievements);
+      formData.append("about", personalInfo.about);
+
+      const response = await axios.post(
+        "http://localhost:9090/api/submit-personalInfo",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
+
       window.alert("Data Added ");
       setSubmissionSuccess(true);
     } catch (error) {
@@ -124,18 +195,46 @@ function PersonalInfo() {
             <Form>
               <div className="headUserImageContainer"></div>
               <h2> Personal Info </h2>
-              <Form.Group className="mb-3" controlId="formGroupDateOfBirth">
-                <Form.Label>Date of Birth</Form.Label>
+              <Form.Group className="mb-3" controlId="formGroupEmail">
+                <Form.Label>Name</Form.Label>
                 <Form.Control
-                  type="date"
-                  placeholder="Date of Birth"
-                  value={personalInfo.dob}
+                  type="text"
+                  placeholder="Name"
+                  value={personalInfo.name}
                   onChange={(e) =>
-                    setPersonalInfo({ ...personalInfo, dob: e.target.value })
+                    setPersonalInfo({ ...personalInfo, name: e.target.value })
                   }
                 />
-                {personalInfoValidationErrors.dob && (
-                  <p className="error">{personalInfoValidationErrors.dob}</p>
+                {personalInfoValidationErrors.name && (
+                  <p className="error">{personalInfoValidationErrors.name}</p>
+                )}
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formGroupEmail">
+                <Form.Label>Your Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Email"
+                  value={personalInfo.email}
+                  onChange={(e) =>
+                    setPersonalInfo({ ...personalInfo, email: e.target.value })
+                  }
+                />
+                {personalInfoValidationErrors.email && (
+                  <p className="error">{personalInfoValidationErrors.email}</p>
+                )}
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formGroupDateOfBirth">
+                <Form.Label>Mobile</Form.Label>
+                <Form.Control
+                  type="mob"
+                  placeholder="Mobile No"
+                  value={personalInfo.mobile}
+                  onChange={(e) =>
+                    setPersonalInfo({ ...personalInfo, mobile: e.target.value })
+                  }
+                />
+                {personalInfoValidationErrors.mobile && (
+                  <p className="error">{personalInfoValidationErrors.mobile}</p>
                 )}
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupGender">
@@ -176,17 +275,17 @@ function PersonalInfo() {
                 <Form.Control
                   type="text"
                   placeholder="Language Known"
-                  value={personalInfo.languageKnown}
+                  value={personalInfo.languages}
                   onChange={(e) =>
                     setPersonalInfo({
                       ...personalInfo,
-                      languageKnown: e.target.value,
+                      languages: e.target.value,
                     })
                   }
                 />
-                {personalInfoValidationErrors.languageKnown && (
+                {personalInfoValidationErrors.languages && (
                   <p className="error">
-                    {personalInfoValidationErrors.languageKnown}
+                    {personalInfoValidationErrors.languages}
                   </p>
                 )}
               </Form.Group>
@@ -209,43 +308,70 @@ function PersonalInfo() {
                   </p>
                 )}
               </Form.Group>
-              <Form.Group className="mb-3" controlId="formGroupAchiever">
-                <Form.Label>Achiever</Form.Label>
+              <Form.Group className="mb-3" controlId="formGroupHobbies">
+                <Form.Label>Skills</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Achiever"
-                  value={personalInfo.achiever}
+                  placeholder="skills"
+                  value={personalInfo.skills}
                   onChange={(e) =>
                     setPersonalInfo({
                       ...personalInfo,
-                      achiever: e.target.value,
+                      skills: e.target.value,
                     })
                   }
                 />
-                {personalInfoValidationErrors.achiever && (
+                {personalInfoValidationErrors.skills && (
+                  <p className="error">{personalInfoValidationErrors.skills}</p>
+                )}
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formGroupAchiever">
+                <Form.Label>Achievements</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Achievements"
+                  value={personalInfo.achievements}
+                  onChange={(e) =>
+                    setPersonalInfo({
+                      ...personalInfo,
+                      achievements: e.target.value,
+                    })
+                  }
+                />
+                {personalInfoValidationErrors.achievements && (
                   <p className="error">
-                    {personalInfoValidationErrors.achiever}
+                    {personalInfoValidationErrors.achievements}
                   </p>
                 )}
               </Form.Group>
               <Form.Group className="mb-3" controlId="formGroupTechnicalSkills">
-                <Form.Label>Technical Skills</Form.Label>
+                <Form.Label>About</Form.Label>
                 <Form.Control
                   type="text"
                   placeholder="Technical Skills"
-                  value={personalInfo.technical}
+                  value={personalInfo.about}
                   onChange={(e) =>
                     setPersonalInfo({
                       ...personalInfo,
-                      technical: e.target.value,
+                      about: e.target.value,
                     })
                   }
                 />
-                {personalInfoValidationErrors.technical && (
-                  <p className="error">
-                    {personalInfoValidationErrors.technical}
-                  </p>
+                {personalInfoValidationErrors.about && (
+                  <p className="error">{personalInfoValidationErrors.about}</p>
                 )}
+              </Form.Group>
+              <Form.Group className="mb-3" controlId="formGroupImage">
+                <Form.Label>Upload Profile Image</Form.Label>
+                <Form.Control
+                  type="file"
+                  onChange={(p) => {
+                    const file = p.target.files[0];
+                    // getBase64(file);
+                    setProfImgs([file]);
+                  }}
+                  required
+                />
               </Form.Group>
 
               <Button

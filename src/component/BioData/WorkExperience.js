@@ -79,7 +79,7 @@ function WorkExperience() {
     setWorkExperienceValidationErrors(errors);
     return isValid;
   };
-
+const [submissionSuccess, setSubmissionSuccess] = useState(false);
   const handleSubmit = async (e) => {
     e.preventDefault();
     const isValidate = workExperienceValidateForm();
@@ -94,6 +94,7 @@ function WorkExperience() {
         workExperience
       );
       window.alert("Data Added ");
+       setSubmissionSuccess(true);
     } catch (error) {
       window.alert("error : " + error);
     }
@@ -210,8 +211,9 @@ function WorkExperience() {
                 Submit
               </Button>
               {/* Button to navigate to next step */}
-              <Link to="/BioData">Prev</Link>-
-              <Link to="/EduProject">Next</Link>
+              {submissionSuccess && (
+                <Link to="/UserProfile">Go to UserProfile</Link>
+              )}
             </Form>
           </div>
         </div>

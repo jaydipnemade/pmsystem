@@ -105,34 +105,45 @@ function Navbar() {
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
-          <div className="dropdown">
-            {isLoggedIn ? (
-              <div className="dropdown-btn">
-                | Hi, {localStorage.getItem("name")}{" "}
-                <i className="fa-solid fa-chevron-down"></i>
-              </div>
-            ) : (
-              <button className="dropdown-btn">
-                Hey Please Login <i className="fa-solid fa-chevron-down"></i>
-              </button>
-            )}
-            <div className="dropdown-content">
-              {isLoggedIn ? (
-                <>
-                  <Link to={"/RecProfile"}>view Profile</Link>
-                  <Link to={"/CreateJob"}>Post a Job</Link>
-                  <Link to={"/UserLogin"} onClick={handleLogout}>
-                    Logout
-                  </Link>
-                </>
-              ) : (
-                <Link to={"/UserLogin"}>Login</Link>
-              )}
-              {/* Add more dropdown items as needed */}
+        </nav>
+        <div className="dropdown">
+          {isLoggedIn ? (
+            <div className="dropdown-btn">
+              | Hi, {localStorage.getItem("name")}{" "}
+              <i className="fa-solid fa-chevron-down"></i>
             </div>
+          ) : (
+            <button className="dropdown-btn">
+              Hey Please Login <i className="fa-solid fa-chevron-down"></i>
+            </button>
+          )}
+          <div className="dropdown-content">
+            {isLoggedIn ? (
+              <>
+                <Link style={{ color: "#130f40" }} to={"/RecProfile"}>
+                  view Profile
+                </Link>
+                <Link style={{ color: "#130f40" }} to={"/CreateJob"}>
+                  Post a Job
+                </Link>
+                <Link
+                  style={{ color: "#130f40" }}
+                  to={"/UserLogin"}
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Link>
+              </>
+            ) : (
+              <Link style={{ color: "#130f40" }} to={"/UserLogin"}>
+                Login
+              </Link>
+            )}
+            {/* Add more dropdown items as needed */}
           </div>
+        </div>
 
-          {/* {isLoggedIn && (
+        {/* {isLoggedIn && (
             <Link
               to={"/Home"}
               className="nav-link active"
@@ -141,7 +152,7 @@ function Navbar() {
               <i className="fa-solid fa-bell fa-shake fa-2xl"></i>
             </Link>
           )} */}
-        </nav>
+
         {/* new code */}
         {/* <div className="Navcontainer" id="login-btn1">
           {isLoggedIn ? (

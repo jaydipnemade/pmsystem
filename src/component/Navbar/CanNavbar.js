@@ -105,30 +105,39 @@ function Navbar() {
               <i className="fa-solid fa-magnifying-glass"></i>
             </button>
           </div>
-          <div className="dropdown">
-            {isLoggedIn ? (
-              <div className="dropdown-btn">
-                | Hi, {localStorage.getItem("name")}{" "}
-              </div>
-            ) : (
-              <button className="dropdown-btn">Hey Please Login.</button>
-            )}
-            <div className="dropdown-content">
-              {isLoggedIn ? (
-                <>
-                  <Link to={"/UserProfile"}>view Profile</Link>
-                  <Link to={"/JobInformation"}>Apply for JOB</Link>
-                  <Link to={"/UserLogin"} onClick={handleLogout}>
-                    Logout
-                  </Link>
-                </>
-              ) : (
-                <Link to={"/UserLogin"}>Login</Link>
-              )}
-              {/* Add more dropdown items as needed */}
-            </div>
-          </div>
         </nav>
+        <div className="dropdown">
+          {isLoggedIn ? (
+            <div className="dropdown-btn">
+              | Hi, {localStorage.getItem("name")}{" "}
+            </div>
+          ) : (
+            <button className="dropdown-btn">Hey Please Login.</button>
+          )}
+          <div className="dropdown-content">
+            {isLoggedIn ? (
+              <>
+                <Link style={{ color: "#130f40" }} to={"/UserProfile"}>
+                  view Profile
+                </Link>
+                <Link style={{ color: "#130f40" }} to={"/JobInformation"}>
+                  Apply for JOB
+                </Link>
+                <Link
+                  style={{ color: "#130f40" }}
+                  to={"/UserLogin"}
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Link>
+              </>
+            ) : (
+              <Link to={"/UserLogin"}>Login</Link>
+            )}
+            {/* Add more dropdown items as needed */}
+          </div>
+        </div>
+
         {/* new code */}
         {/* <div className="Navcontainer" id="login-btn1">
           {isLoggedIn ? (

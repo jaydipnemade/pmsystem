@@ -114,7 +114,7 @@ const UserProfile = () => {
         console.error("Error fetching qualification data:", error);
       });
   }, []);
-   const defaultProfileImage = require("./test1.jpeg");
+  const defaultProfileImage = require("./test1.jpeg");
   return (
     <>
       <section className="UserProfile">
@@ -140,7 +140,7 @@ const UserProfile = () => {
                 </div>
               </div>
               <div>
-                <Link to="/BioData" className="rounded-button">
+                <Link to="/PersonalInfo" className="rounded-button">
                   <i
                     className="fa-solid fa-pencil fa-xl"
                     style={{ color: "#130f40" }}
@@ -175,7 +175,7 @@ const UserProfile = () => {
             <div className="UserProfile_form_container2">
               <div>
                 <div className="internal_rounded-button">
-                  <Link to="/BioData">
+                  <Link to="/PersonalInfo">
                     <i
                       className="fa-solid fa-pencil fa-xl"
                       style={{ color: "#130f40" }}
@@ -286,7 +286,7 @@ const UserProfile = () => {
             <div className="UserProfile_form_container2">
               <div>
                 <div className="internal_rounded-button">
-                  <Link to="/BioData">
+                  <Link to="/PersonalInfo">
                     <i
                       className="fa-solid fa-pencil fa-xl"
                       style={{ color: "#130f40" }}
